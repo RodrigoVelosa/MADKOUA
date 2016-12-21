@@ -10,8 +10,8 @@ namespace MADKOUA
     class Autor
     {
         public Autor() { }
-        public String Nome {set; get;}
-        public String Apelido {set; get;}
+        public string Nome {set; get;}
+        public string Apelido {set; get;}
 
 
         public void AdicionaABaseDados()
