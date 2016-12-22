@@ -18,7 +18,6 @@ namespace MADKOUA
             Autor.EliminaAutor(8);
             dataGridView1.DataSource = Autor.ListaAutores();
 
-
         }
     }
 }

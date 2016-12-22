@@ -15,7 +15,7 @@ namespace MADKOUA
         public String ISBN { get; set; }
         public int NLivrosDisp { get; set; }
 
-        private static ComunicaBD ComunicacaoBD = new ComunicaBD("Data Source=RODRIGOVELOSA\\RODRIGOVELOSA;Initial Catalog=MADKOUADB;Integrated Security=True");
+        private static ComunicaBD ComunicacaoBD = new ComunicaBD();
 
         public static void EliminaLivro(int Livro_ID)
         {

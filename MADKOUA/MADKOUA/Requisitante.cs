@@ -14,7 +14,12 @@ namespace MADKOUA
         public String Nome { set; get; }
         public String CodigoUtilizador { set; get; }
         public String Password { set; get; }
-        private static ComunicaBD ComunicacaoBD = new ComunicaBD("Data Source=RODRIGOVELOSA\\RODRIGOVELOSA;Initial Catalog=MADKOUADB;Integrated Security=True");
+        //Cone
+        private static ComunicaBD ComunicacaoBD = new ComunicaBD();
+        
+        
+        //Conection String do Canha
+        //private static ComunicaBD ComunicacaoBD = new ComunicaBD("Data Source=DESKTOP-J1G74PJ\\SQLEXPRESS;Initial Catalog=MADKOUADB;Integrated Security=True");
 
         public void AdicionaABaseDados()
         {

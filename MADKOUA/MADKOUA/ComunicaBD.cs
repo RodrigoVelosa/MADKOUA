@@ -15,7 +15,29 @@ namespace MADKOUA
 
         private SqlConnection Conexao;
         
-
+        public ComunicaBD()
+        {
+            String StringDeConexao = "";
+            switch (System.Environment.MachineName)
+            {
+                case "RODRIGOVELOSA":
+                    StringDeConexao = "Data Source=RODRIGOVELOSA\\RODRIGOVELOSA;Initial Catalog=MADKOUADB;Integrated Security=True";
+                    break;
+                case "DESKTOP-J1G74PJ":
+                    StringDeConexao = "Data Source = DESKTOP - J1G74PJ\\SQLEXPRESS; Initial Catalog = MADKOUADB; Integrated Security = True";
+                    break;
+            }
+            Conexao = new SqlConnection();
+            try
+            {
+                Conexao.ConnectionString = StringDeConexao;
+                Conexao.Open();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message, "Erro na ligação à base de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         //O construtor já abre a ligação com a base de dados.
         public ComunicaBD(string StringDeConexao)
         {
@@ -28,7 +50,6 @@ namespace MADKOUA
             catch(Exception e)
             {
                 MessageBox.Show(e.Message, "Erro na ligação à base de dados", MessageBoxButtons.OK,MessageBoxIcon.Error);
-                Console.WriteLine(e.Message);
             }
         }
 

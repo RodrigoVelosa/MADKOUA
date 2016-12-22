@@ -12,7 +12,7 @@ namespace MADKOUA
         public Autor() { }
         public String Nome {set; get;}
         public String Apelido {set; get;}
-        private static ComunicaBD ComunicacaoBD = new ComunicaBD("Data Source=RODRIGOVELOSA\\RODRIGOVELOSA;Initial Catalog=MADKOUADB;Integrated Security=True");
+        private static ComunicaBD ComunicacaoBD = new ComunicaBD();
 
 
 
