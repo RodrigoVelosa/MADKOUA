@@ -15,12 +15,16 @@ namespace MADKOUA
         public String ISBN { get; set; }
         public int NLivrosDisp { get; set; }
 
+        private static ComunicaBD ComunicacaoBD = new ComunicaBD("Data Source=RODRIGOVELOSA\\RODRIGOVELOSA;Initial Catalog=MADKOUADB;Integrated Security=True");
+
+        public static void EliminaLivro(int Livro_ID)
+        {
+            ComunicacaoBD.ExecutaUpdateQuery("DELETE FROM Livro WHERE ID = " + Livro_ID);
+        }
         public void AdicionaABaseDados(int ID_Autor, int ID_Editora)
         {
             ComunicacaoBD.ExecutaUpdateQuery("INSERT INTO Livro(Autor_ID, Editora_ID, Titulo, Edicao, ISBN, NLivrosDisp) VALUES ('" + ID_Autor + "','" + ID_Editora + "','" + Titulo + "','" + Edicao + "','" + ISBN + "','" + NLivrosDisp +"')");
         }
-
-        private static ComunicaBD ComunicacaoBD = new ComunicaBD("Data Source=RODRIGOVELOSA\\RODRIGOVELOSA;Initial Catalog=MADKOUADB;Integrated Security=True");
         public static DataTable ListaLivros()
         {
             return ComunicacaoBD.ExecutaQuery("SELECT * FROM Livro");

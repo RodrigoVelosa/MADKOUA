@@ -21,6 +21,11 @@ namespace MADKOUA
             ComunicacaoBD.ExecutaUpdateQuery("INSERT INTO Autor(Nome, CodigoUtilizador, Password) VALUES ('" + Nome + "','" + CodigoUtilizador + "','" + Password + "')");
         }
 
+        public static void EliminaRequisitante(int Requisitante_ID)
+        {
+            ComunicacaoBD.ExecutaUpdateQuery("DELETE FROM Requisitante WHERE ID = " + Requisitante_ID);
+        }
+
         public static DataTable ListaRequisitantes()
         {
             return ComunicacaoBD.ExecutaQuery("SELECT * FROM Requisitante");

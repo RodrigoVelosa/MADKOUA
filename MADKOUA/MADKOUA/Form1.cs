@@ -15,11 +15,9 @@ namespace MADKOUA
         public Form1()
         {
             InitializeComponent();
-            Autor novoAutor = new Autor();
-            novoAutor.Nome = "Rodrigo";
-            novoAutor.Apelido = "Fernandes Velosa";
-            novoAutor.AdicionaABaseDados();
+            Autor.EliminaAutor(8);
             dataGridView1.DataSource = Autor.ListaAutores();
+
 
         }
     }
