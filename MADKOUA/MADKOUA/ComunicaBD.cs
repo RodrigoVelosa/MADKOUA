@@ -24,7 +24,7 @@ namespace MADKOUA
                     StringDeConexao = "Data Source=RODRIGOVELOSA\\RODRIGOVELOSA;Initial Catalog=MADKOUADB;Integrated Security=True";
                     break;
                 case "DESKTOP-J1G74PJ":
-                    StringDeConexao = "Data Source = DESKTOP - J1G74PJ\\SQLEXPRESS; Initial Catalog = MADKOUADB; Integrated Security = True";
+                    StringDeConexao = "Data Source=DESKTOP-J1G74PJ\\SQLEXPRESS;Initial Catalog=MADKOUADB;Integrated Security=True";
                     break;
             }
             Conexao = new SqlConnection();

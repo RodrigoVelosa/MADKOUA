@@ -15,7 +15,7 @@ namespace MADKOUA
         public Form1()
         {
             InitializeComponent();
-            Autor.EliminaAutor(8);
+
             dataGridView1.DataSource = Autor.ListaAutores();
 
         }
