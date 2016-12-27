@@ -18,9 +18,18 @@ namespace MADKOUA_BD
         {
             return BD.ExecutaQuery("SELECT * FROM " + Tabela);
         }
-        public static void AdicionaRequisicao(int Livro_ID, int Requisitante_ID, DateTime Data_L, DateTime Data_E, String Estado)
+        public static void AdicionaRequisicao(int Livro_ID, int Requisitante_ID, DateTime Data_Levantamento, DateTime Data_Entrega, String Estado)
         {
             BD.ExecutaUpdateQuery("INSERT INTO Requisicao(Livro_ID, Requisitante_ID, Data_L, Data_E, Estado) VALUES ('" + Livro_ID + "','" + Requisitante_ID + "','" + Data_Levantamento + "','" + Data_Entrega + "','" + Estado + "')");
-        }     
+        }
+
+        public static void AdicionaEditora(string Nome, string Morada)
+        {
+            BD.ExecutaUpdateQuery("INSERT INTO Editora(Nome, Morada) VALUES ('" + Nome + "','" + Morada + "')");
+        }   
+        public static void AdicionaLivro(int ID_Autor, int ID_Editora, string Titulo, int Edicao, string ISBN, int NLivrosDisp)
+        {
+            BD.ExecutaUpdateQuery("INSERT INTO Livro(Autor_ID, Editora_ID, Titulo, Edicao, ISBN, NLivrosDisp) VALUES ('" + ID_Autor + "','" + ID_Editora + "','" + Titulo + "','" + Edicao + "','" + ISBN + "','" + NLivrosDisp + "')");
+        }
     }
 }

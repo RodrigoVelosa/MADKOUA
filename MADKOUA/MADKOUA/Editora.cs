@@ -19,11 +19,11 @@ namespace MADKOUA
 
         public void AdicionaBD()
         {
-            ComunicacaoBD.ExecutaUpdateQuery("INSERT INTO Editora(Nome, Morada) VALUES ('" + Nome + "','" + Morada + "')");
+            ComunicacaoBD.AdicionaEditora(Nome, Morada);
         }
 
 
-        private static ComunicaBD ComunicacaoBD = new ComunicaBD();
+
         public static void EliminaEditora(int Editora_ID)
         {
             ComunicacaoBD.Elimina("Editora", Editora_ID);

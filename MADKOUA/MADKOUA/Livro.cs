@@ -17,11 +17,11 @@ namespace MADKOUA
         public int NLivrosDisp { get; set; }
         public int ID_Autor { get; set; }
         public int ID_Editora { get; set; }
-        private static ComunicaBD ComunicacaoBD = new ComunicaBD();
+
 
         public void AdicionaBD()
         {
-            ComunicacaoBD.ExecutaUpdateQuery("INSERT INTO Livro(Autor_ID, Editora_ID, Titulo, Edicao, ISBN, NLivrosDisp) VALUES ('" + ID_Autor + "','" + ID_Editora + "','" + Titulo + "','" + Edicao + "','" + ISBN + "','" + NLivrosDisp + "')");
+            ComunicacaoBD.AdicionaLivro(ID_Autor, ID_Editora, Titulo, Edicao, ISBN, NLivrosDisp);            
         }
 
 
