@@ -21,6 +21,14 @@ namespace MADKOUA_BD
         public static void AdicionaRequisicao(int Livro_ID, int Requisitante_ID, DateTime Data_L, DateTime Data_E, String Estado)
         {
             BD.ExecutaUpdateQuery("INSERT INTO Requisicao(Livro_ID, Requisitante_ID, Data_L, Data_E, Estado) VALUES ('" + Livro_ID + "','" + Requisitante_ID + "','" + Data_Levantamento + "','" + Data_Entrega + "','" + Estado + "')");
-        }     
+        }
+        public static void AdicionaAutor(String Nome, String Apelido)
+        {
+            BD.ExecutaUpdateQuery("INSERT INTO Autor(Nome, Apelido) VALUES ('" + Nome + "','" + Apelido + "')");
+        }
+        public static void AdicionaRequisitante(String Nome, String CodigoUtilizador, String Password)
+        {
+            BD.ExecutaUpdateQuery("INSERT INTO Autor(Nome, CodigoUtilizador, Password) VALUES ('" + Nome + "','" + CodigoUtilizador + "','" + Password + "')");
+        }    
     }
 }
