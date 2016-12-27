@@ -21,15 +21,20 @@ namespace MADKOUA
             ComunicacaoBD.AdicionaRequisicao(Livro_ID, Requisitante_ID, Data_Levantamento, Data_Entrega, Estado);
         }
 
-        public static void EliminaRequisitante(int Requisicao_ID)
+        public static void EliminaRequisicao(int Requisicao_ID)
         {
             ComunicacaoBD.Elimina("Requisicao", Requisicao_ID);
 
         }
 
-        public static DataTable ListaRequisitantes()
+        public static DataTable ListaRequisicao()
         {
             return ComunicacaoBD.Lista("Requisicao");
+        }
+
+        public static DataTable ListaRequisicaoProcura(String Coluna, String Expressao)
+        {
+            return ComunicacaoBD.ListaProcura("Requisicao", Coluna, Expressao);
         }
     }
 }

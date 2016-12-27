@@ -23,9 +23,7 @@ namespace MADKOUA
         {
             ComunicacaoBD.AdicionaLivro(ID_Autor, ID_Editora, Titulo, Edicao, ISBN, NLivrosDisp);            
         }
-
-
-
+        
         public static void EliminaLivro(int Livro_ID)
         {
             ComunicacaoBD.Elimina("Livro", Livro_ID);
@@ -33,6 +31,10 @@ namespace MADKOUA
         public static DataTable ListaLivros()
         {
             return ComunicacaoBD.Lista("Livro");
+        }
+        public static DataTable ListaLivrosProcura(String Coluna, String Expressao)
+        {
+            return ComunicacaoBD.ListaProcura("Livro", Coluna, Expressao);
         }
     }
 }

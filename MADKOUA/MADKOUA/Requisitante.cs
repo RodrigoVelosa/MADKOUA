@@ -31,5 +31,10 @@ namespace MADKOUA
             return ComunicacaoBD.Lista("Requisitante");
         }
 
+        public static DataTable ListaRequisitantesProcura(String Coluna, String Expressao)
+        {
+            return ComunicacaoBD.ListaProcura("Requisitante", Coluna, Expressao);
+        }
+
     }
 }

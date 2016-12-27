@@ -30,5 +30,9 @@ namespace MADKOUA
             return ComunicacaoBD.Lista("Autor");
         }
 
+        public static DataTable ListaAutoresProcura(String Coluna, String Expressao)
+        {
+            return ComunicacaoBD.ListaProcura("Autor", Coluna, Expressao);
+        }
     }
 }

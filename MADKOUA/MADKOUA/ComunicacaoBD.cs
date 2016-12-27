@@ -18,6 +18,12 @@ namespace MADKOUA_BD
         {
             return BD.ExecutaQuery("SELECT * FROM " + Tabela);
         }
+        public static DataTable ListaProcura(String Tabela, String Coluna, String Procura)
+        {
+            return BD.ExecutaQuery("SELECT * FROM " + Tabela + " WHERE " + Coluna + " LIKE '" + Procura + "%'");
+        }
+        
+        #region "Adicionas"
         public static void AdicionaRequisicao(int Livro_ID, int Requisitante_ID, DateTime Data_Levantamento, DateTime Data_Entrega, String Estado)
         {
             BD.ExecutaUpdateQuery("INSERT INTO Requisicao(Livro_ID, Requisitante_ID, Data_L, Data_E, Estado) VALUES ('" + Livro_ID + "','" + Requisitante_ID + "','" + Data_Levantamento + "','" + Data_Entrega + "','" + Estado + "')");
@@ -39,5 +45,7 @@ namespace MADKOUA_BD
         {
             BD.ExecutaUpdateQuery("INSERT INTO Livro(Autor_ID, Editora_ID, Titulo, Edicao, ISBN, NLivrosDisp) VALUES ('" + ID_Autor + "','" + ID_Editora + "','" + Titulo + "','" + Edicao + "','" + ISBN + "','" + NLivrosDisp + "')");
         }
+        #endregion
+        
     }
 }

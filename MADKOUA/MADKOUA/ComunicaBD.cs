@@ -82,7 +82,7 @@ namespace MADKOUA_BD
             {
                 MessageBox.Show(e.Message, "Erro ao executar query na base de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 MessageBox.Show(query, "Query passada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Console.WriteLine(e.Message);
+                Clipboard.SetText(query);
             }
 
             return DT;
@@ -102,6 +102,7 @@ namespace MADKOUA_BD
             {
                 MessageBox.Show(e.Message, "Erro ao atualizar a base de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 MessageBox.Show(query, "Query passada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Clipboard.SetText(query);
             }
 
             return count;
