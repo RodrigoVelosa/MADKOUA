@@ -10,7 +10,7 @@ namespace MADKOUA
     interface ItemBD
     {
         public void AdicionaBD();
-        public void EliminaBD(int id);
-        public DataTable ListaDB();
+        public static void EliminaBD(int id);
+        public static DataTable ListaDB();
     }
 }
