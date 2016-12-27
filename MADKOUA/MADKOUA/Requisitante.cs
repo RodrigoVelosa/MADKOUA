@@ -7,25 +7,22 @@ using System.Threading.Tasks;
 
 namespace MADKOUA
 {
-    class Requisitante
+    class Requisitante : ItemBD
     {
         public Requisitante() { }
 
         public String Nome { set; get; }
         public String CodigoUtilizador { set; get; }
         public String Password { set; get; }
-        //Cone
-        private static ComunicaBD ComunicacaoBD = new ComunicaBD();
-        
-        
-        //Conection String do Canha
-        //private static ComunicaBD ComunicacaoBD = new ComunicaBD("Data Source=DESKTOP-J1G74PJ\\SQLEXPRESS;Initial Catalog=MADKOUADB;Integrated Security=True");
 
-        public void AdicionaABaseDados()
+
+        public void AdicionaBD()
         {
             ComunicacaoBD.ExecutaUpdateQuery("INSERT INTO Autor(Nome, CodigoUtilizador, Password) VALUES ('" + Nome + "','" + CodigoUtilizador + "','" + Password + "')");
         }
 
+
+        private static ComunicaBD ComunicacaoBD = new ComunicaBD();
         public static void EliminaRequisitante(int Requisitante_ID)
         {
             ComunicacaoBD.ExecutaUpdateQuery("DELETE FROM Requisitante WHERE ID = " + Requisitante_ID);
