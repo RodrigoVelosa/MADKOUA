@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Autor.cs" />
     <Compile Include="ComunicaBD.cs" />
+    <Compile Include="ComunicacaoBD.cs" />
     <Compile Include="Editora.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

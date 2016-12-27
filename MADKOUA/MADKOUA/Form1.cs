@@ -18,6 +18,7 @@ namespace MADKOUA
 
             dataGridView1.DataSource = Editora.ListaEditoras();
 
+
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MADKOUA_BD;
 
 namespace MADKOUA
 {
@@ -15,21 +16,20 @@ namespace MADKOUA
         public DateTime Data_Entrega { get; set; }
         public String Estado { get; set; }
 
-        private static ComunicaBD ComunicacaoBD = new ComunicaBD();
-
         public void AdicionaBD()
         {
-            ComunicacaoBD.ExecutaUpdateQuery("INSERT INTO Requisicao(Livro_ID, Requisitante_ID, Data_L, Data_E, Estado) VALUES ('" + Livro_ID + "','" + Requisitante_ID + "','" + Data_Levantamento + "','" + Data_Entrega + "','" +  Estado + "')");
+            ComunicacaoBD.AdicionaRequisicao(Livro_ID, Requisitante_ID, Data_Levantamento, Data_Entrega, Estado);
         }
 
         public static void EliminaRequisitante(int Requisicao_ID)
         {
-            ComunicacaoBD.ExecutaUpdateQuery("DELETE FROM Requisicao WHERE ID = " + Requisicao_ID);
+            ComunicacaoBD.Elimina("Requisicao", Requisicao_ID);
+
         }
 
         public static DataTable ListaRequisitantes()
         {
-            return ComunicacaoBD.ExecutaQuery("SELECT * FROM Requisicao");
+            return ComunicacaoBD.Lista("Requisicao");
         }
     }
 }

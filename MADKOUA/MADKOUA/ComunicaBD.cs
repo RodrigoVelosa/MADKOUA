@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Data;
 using MADKOUA;
 
-namespace MADKOUA
+namespace MADKOUA_BD
 {
     class ComunicaBD
     {
