@@ -22,11 +22,19 @@ namespace MADKOUA_BD
         {
             BD.ExecutaUpdateQuery("INSERT INTO Requisicao(Livro_ID, Requisitante_ID, Data_L, Data_E, Estado) VALUES ('" + Livro_ID + "','" + Requisitante_ID + "','" + Data_Levantamento + "','" + Data_Entrega + "','" + Estado + "')");
         }
+        public static void AdicionaAutor(String Nome, String Apelido)
+        {
+            BD.ExecutaUpdateQuery("INSERT INTO Autor(Nome, Apelido) VALUES ('" + Nome + "','" + Apelido + "')");
+        }
+        public static void AdicionaRequisitante(String Nome, String CodigoUtilizador, String Password)
+        {
+            BD.ExecutaUpdateQuery("INSERT INTO Autor(Nome, CodigoUtilizador, Password) VALUES ('" + Nome + "','" + CodigoUtilizador + "','" + Password + "')");
+        }
 
         public static void AdicionaEditora(string Nome, string Morada)
         {
             BD.ExecutaUpdateQuery("INSERT INTO Editora(Nome, Morada) VALUES ('" + Nome + "','" + Morada + "')");
-        }   
+        }
         public static void AdicionaLivro(int ID_Autor, int ID_Editora, string Titulo, int Edicao, string ISBN, int NLivrosDisp)
         {
             BD.ExecutaUpdateQuery("INSERT INTO Livro(Autor_ID, Editora_ID, Titulo, Edicao, ISBN, NLivrosDisp) VALUES ('" + ID_Autor + "','" + ID_Editora + "','" + Titulo + "','" + Edicao + "','" + ISBN + "','" + NLivrosDisp + "')");

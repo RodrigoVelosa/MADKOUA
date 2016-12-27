@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MADKOUA_BD;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -17,18 +18,16 @@ namespace MADKOUA
 
         public void AdicionaBD()
         {
-            ComunicacaoBD.ExecutaUpdateQuery("INSERT INTO Autor(Nome, Apelido) VALUES ('" + Nome + "','" + Apelido + "')");
+            ComunicacaoBD.AdicionaAutor(Nome, Apelido);
         }
-
-
-        private static ComunicaBD ComunicacaoBD = new ComunicaBD();
+        
         public static void EliminaAutor(int Autor_ID)
         {
-            ComunicacaoBD.ExecutaUpdateQuery("DELETE FROM Autor WHERE ID = " + Autor_ID);
+            ComunicacaoBD.Elimina("Autor", Autor_ID);
         }
         public static DataTable ListaAutores()
         {
-            return ComunicacaoBD.ExecutaQuery("SELECT * FROM Autor");
+            return ComunicacaoBD.Lista("Autor");
         }
 
     }
