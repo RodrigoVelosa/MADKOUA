@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MADKOUA_BD;
 
 namespace MADKOUA
 {
@@ -27,11 +28,11 @@ namespace MADKOUA
 
         public static void EliminaLivro(int Livro_ID)
         {
-            ComunicacaoBD.ExecutaUpdateQuery("DELETE FROM Livro WHERE ID = " + Livro_ID);
+            ComunicacaoBD.Elimina("Livro", Livro_ID);
         }
         public static DataTable ListaLivros()
         {
-            return ComunicacaoBD.ExecutaQuery("SELECT * FROM Livro");
+            return ComunicacaoBD.Lista("Livro");
         }
     }
 }
