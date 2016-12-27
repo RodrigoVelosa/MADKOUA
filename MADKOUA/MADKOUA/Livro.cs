@@ -16,6 +16,7 @@ namespace MADKOUA
         public int NLivrosDisp { get; set; }
         public int ID_Autor { get; set; }
         public int ID_Editora { get; set; }
+        private static ComunicaBD ComunicacaoBD = new ComunicaBD();
 
         public void AdicionaBD()
         {
@@ -23,7 +24,7 @@ namespace MADKOUA
         }
 
 
-        private static ComunicaBD ComunicacaoBD = new ComunicaBD();
+
         public static void EliminaLivro(int Livro_ID)
         {
             ComunicacaoBD.ExecutaUpdateQuery("DELETE FROM Livro WHERE ID = " + Livro_ID);

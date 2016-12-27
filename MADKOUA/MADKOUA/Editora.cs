@@ -27,7 +27,7 @@ namespace MADKOUA
         {
             ComunicacaoBD.ExecutaUpdateQuery("DELETE FROM Editora WHERE ID = " + Editora_ID);
         }
-        public static DataTable ListaEditores()
+        public static DataTable ListaEditoras()
         {
             return ComunicacaoBD.ExecutaQuery("SELECT * FROM Editora");
         }

@@ -16,7 +16,7 @@ namespace MADKOUA
         {
             InitializeComponent();
 
-            dataGridView1.DataSource = Autor.ListaAutores();
+            dataGridView1.DataSource = Editora.ListaEditoras();
 
         }
     }
