@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Data;
 using MADKOUA;
+using MADKOUA_LOG;
 
 namespace MADKOUA_BD
 {
@@ -14,14 +15,17 @@ namespace MADKOUA_BD
     {
 
         private SqlConnection Conexao;
+        private Logger log;
         
         public ComunicaBD()
         {
+            log = new Logger(new FicheiroRecorder());
+
             String StringDeConexao = "";
             switch (System.Environment.MachineName)
             {
                 case "RODRIGOVELOSA":
-                    StringDeConexao = "Data Source=RODRIGOVELOSA\\RODRIGOVELOSA;Initial Catalog=MADKOUADB;Integrated Security=True";
+                    StringDeConexao = "Data Souce=RODRIGOVELOSA\\RODRIGOVELOSA;Initial Catalog=MADKOUADB;Integrated Security=True";
                     break;
                 case "DESKTOP-J1G74PJ":
                     StringDeConexao = "Data Source=DESKTOP-J1G74PJ\\SQLEXPRESS;Initial Catalog=MADKOUADB;Integrated Security=True";
@@ -36,6 +40,7 @@ namespace MADKOUA_BD
             catch(Exception e)
             {
                 MessageBox.Show(e.Message, "Erro na ligação à base de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                log.Log(DateTime.Now + ": " + e.Message);
             }
         }
         //O construtor já abre a ligação com a base de dados.
@@ -50,6 +55,7 @@ namespace MADKOUA_BD
             catch(Exception e)
             {
                 MessageBox.Show(e.Message, "Erro na ligação à base de dados", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                log.Log(DateTime.Now + ": " + e.Message);
             }
         }
 
@@ -64,6 +70,7 @@ namespace MADKOUA_BD
             {
                 MessageBox.Show(e.Message, "Erro ao se desligar da base de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(e.Message);
+                log.Log(DateTime.Now + ": " + e.Message);
             }
         }
 
@@ -83,6 +90,7 @@ namespace MADKOUA_BD
                 MessageBox.Show(e.Message, "Erro ao executar query na base de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 MessageBox.Show(query, "Query passada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Clipboard.SetText(query);
+                log.Log(DateTime.Now + ": " + e.Message + " Query: " + query);
             }
 
             return DT;
@@ -103,6 +111,7 @@ namespace MADKOUA_BD
                 MessageBox.Show(e.Message, "Erro ao atualizar a base de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 MessageBox.Show(query, "Query passada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Clipboard.SetText(query);
+                log.Log(DateTime.Now + ": " + e.Message + " Query: " + query);
             }
 
             return count;
