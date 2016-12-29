@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using MADKOUA_BD;
+using MADKOUA_BD;
 
 namespace MADKOUA
 {
@@ -16,6 +16,8 @@ namespace MADKOUA
         public Form1()
         {
             InitializeComponent();
+
+            ComunicacaoBD.AlteraValorString("Autor", "Nome", 1, "José Luís");
 
             dataGridView1.DataSource=Livro.ListaLivrosProcura("Titulo", "");
 

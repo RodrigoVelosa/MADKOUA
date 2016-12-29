@@ -48,6 +48,14 @@ namespace MADKOUA_BD
         }
 
       
+        public static void AlteraValorString(String Tabela, String Coluna, int id, String Valor)
+        {
+            BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = '" + Valor + "' WHERE ID = " + id);
+        }
+        public static void AlteraValorInteiro(String Tabela, String Coluna, int id, int Valor)
+        {
+            BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + Valor + " WHERE ID = " + id);
+        }
 
         #region "Adicionas"
         public static void AdicionaRequisicao(int Livro_ID, int Requisitante_ID, DateTime Data_Levantamento, DateTime Data_Entrega, String Estado)
