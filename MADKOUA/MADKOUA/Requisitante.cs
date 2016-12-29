@@ -18,7 +18,9 @@ namespace MADKOUA
 
         public void AdicionaBD()
         {
-            ComunicacaoBD.AdicionaRequisitante(Nome, CodigoUtilizador, Password);
+            String Colunas = "Nome, CodigoUtilizador, Password";
+            String Valores = "'" + Nome + "','" + CodigoUtilizador + "','" + Password + "'";
+            ComunicacaoBD.Adiciona("Requisitante", Colunas, Valores);
         }
 
         public static void EliminaRequisitante(int Requisitante_ID)

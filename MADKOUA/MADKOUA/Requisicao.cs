@@ -18,7 +18,9 @@ namespace MADKOUA
 
         public void AdicionaBD()
         {
-            ComunicacaoBD.AdicionaRequisicao(Livro_ID, Requisitante_ID, Data_Levantamento, Data_Entrega, Estado);
+            String Colunas = "Livro_ID, Requisitante_ID, Data_L, Data_E, Estado";
+            String Valores = "'" + Livro_ID + "','" + Requisitante_ID + "','" + Data_Levantamento + "','" + Data_Entrega + "','" + Estado + "'";
+            ComunicacaoBD.Adiciona("Requisicao", Colunas, Valores);
         }
 
         public static void EliminaRequisicao(int Requisicao_ID)
@@ -39,7 +41,7 @@ namespace MADKOUA
 
         public static void MudaEstado(int id, String NovoEstado)
         {
-            ComunicacaoBD.AlteraValorString("Requisicao", "Estado", id, NovoEstado);)
+            ComunicacaoBD.AlteraValorString("Requisicao", "Estado", id, NovoEstado);
         }
     }
 }

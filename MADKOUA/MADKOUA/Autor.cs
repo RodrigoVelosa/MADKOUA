@@ -18,7 +18,9 @@ namespace MADKOUA
 
         public void AdicionaBD()
         {
-            ComunicacaoBD.AdicionaAutor(Nome, Apelido);
+            String Colunas = "Nome, Apelido";
+            String Valores = "'" + Nome + "','" + Apelido + "'";
+            ComunicacaoBD.Adiciona("Autor", Colunas, Valores);
         }
         
         public static void EliminaAutor(int Autor_ID)

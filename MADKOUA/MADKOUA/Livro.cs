@@ -21,7 +21,9 @@ namespace MADKOUA
 
         public void AdicionaBD()
         {
-            ComunicacaoBD.AdicionaLivro(ID_Autor, ID_Editora, Titulo, Edicao, ISBN, NLivrosDisp);            
+            String Colunas = "Autor_ID, Editora_ID, Titulo, Edicao, ISBN, NLivrosDisp";
+            String Valores = "'" + ID_Autor + "','" + ID_Editora + "','" + Titulo + "','" + Edicao + "','" + ISBN + "','" + NLivrosDisp + "'";
+            ComunicacaoBD.Adiciona("Livro", Colunas, Valores);            
         }
         
         public static void EliminaLivro(int Livro_ID)
