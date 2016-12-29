@@ -29,6 +29,12 @@ namespace MADKOUA_BD
             return dt.Rows[0].Field<Int32>(0);
         }
 
+        public static String DevolveString(String Tabela, String Coluna, int id)
+        {
+            DataTable dt = BD.ExecutaQuery("SELECT " + Coluna + " FROM " + Tabela + " WHERE ID = " + id);
+            return dt.Rows[0].Field<String>(0);
+        }
+
         public static void DecrementaValor(String Tabela, String Coluna, int id)
         {
             int Valor = DevolveInteiro(Tabela, Coluna, id);
