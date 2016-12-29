@@ -111,5 +111,10 @@ namespace MADKOUA_BD
         }
         #endregion
         
+        public static void Adiciona(String Tabela, String Colunas, String Valores)
+        {
+            BD.ExecutaUpdateQuery("INSERT INTO " + Tabela + " Values(" + Colunas + ") VALUES (" + Valores + ")");
+        }
+
     }
 }

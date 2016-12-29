@@ -39,7 +39,7 @@ namespace MADKOUA
 
         public static void MudaEstado(int id, String NovoEstado)
         {
-            ComunicacaoBD.AlteraValorString("Requisicao", "Estado", id, NovoEstado);
+            ComunicacaoBD.AlteraValorString("Requisicao", "Estado", id, NovoEstado);)
         }
     }
 }

@@ -19,7 +19,9 @@ namespace MADKOUA
 
         public void AdicionaBD()
         {
-            ComunicacaoBD.AdicionaEditora(Nome, Morada);
+            String Colunas = "Nome, Morada";
+            String Valores = "'" + Nome + "', '" + Morada + "'";
+            ComunicacaoBD.Adiciona("Editora", Colunas, Valores);
         }
 
 
