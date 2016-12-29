@@ -36,5 +36,10 @@ namespace MADKOUA
         {
             return ComunicacaoBD.ListaProcura("Requisicao", Coluna, Expressao);
         }
+
+        public static void MudaEstado(int id, String NovoEstado)
+        {
+            ComunicacaoBD.AlteraValorString("Requisicao", "Estado", id, NovoEstado);
+        }
     }
 }

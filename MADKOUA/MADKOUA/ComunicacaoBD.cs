@@ -4,12 +4,14 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MADKOUA_LOG;
 
 namespace MADKOUA_BD
 {
     static class ComunicacaoBD
     {
         private static ComunicaBD BD = new ComunicaBD();
+
         public static void Elimina(String Tabela, int ID)
         {
             BD.ExecutaUpdateQuery("DELETE FROM " + Tabela + "WHERE ID = " + ID);
@@ -46,15 +48,14 @@ namespace MADKOUA_BD
             int Valor = DevolveInteiro(Tabela, Coluna, id);
             BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + ++Valor + " WHERE ID = " + id);
         }
-
       
-        public static void AlteraValorString(String Tabela, String Coluna, int id, String Valor)
+        public static void AlteraValorString(String Tabela, String Coluna, int id, String NovoValor)
         {
-            BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = '" + Valor + "' WHERE ID = " + id);
+            BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = '" + NovoValor + "' WHERE ID = " + id);
         }
-        public static void AlteraValorInteiro(String Tabela, String Coluna, int id, int Valor)
+        public static void AlteraValorInteiro(String Tabela, String Coluna, int id, int NovoValor)
         {
-            BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + Valor + " WHERE ID = " + id);
+            BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + NovoValor + " WHERE ID = " + id);
         }
 
         #region "Adicionas"
