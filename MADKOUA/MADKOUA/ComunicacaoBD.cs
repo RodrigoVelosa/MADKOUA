@@ -23,6 +23,26 @@ namespace MADKOUA_BD
             return BD.ExecutaQuery("SELECT * FROM " + Tabela + " WHERE " + Coluna + " LIKE '" + Procura + "%'");
         }
         
+        public static int DevolveInteiro(String Tabela, String Coluna, int id)
+        {
+            DataTable dt = BD.ExecutaQuery("SELECT " + Coluna + " FROM " + Tabela + " WHERE ID = " + id);
+            return dt.Rows[0].Field<Int32>(0);
+        }
+
+        public static void DecrementaValor(String Tabela, String Coluna, int id)
+        {
+            int Valor = DevolveInteiro(Tabela, Coluna, id);
+            BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + --Valor + " WHERE ID = " + id);
+        }
+
+        public static void IncrementaValor(String Tabela, String Coluna, int id)
+        {
+            int Valor = DevolveInteiro(Tabela, Coluna, id);
+            BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + ++Valor + " WHERE ID = " + id);
+        }
+
+      
+
         #region "Adicionas"
         public static void AdicionaRequisicao(int Livro_ID, int Requisitante_ID, DateTime Data_Levantamento, DateTime Data_Entrega, String Estado)
         {

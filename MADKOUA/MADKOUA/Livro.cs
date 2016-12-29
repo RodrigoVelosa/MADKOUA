@@ -36,5 +36,15 @@ namespace MADKOUA
         {
             return ComunicacaoBD.ListaProcura("Livro", Coluna, Expressao);
         }
+        public static void DecrementaNLivrosDisp(int id)
+        {
+            if(ComunicacaoBD.DevolveInteiro("Livro", "LivrosDisponiveis", id)>0)
+                ComunicacaoBD.DecrementaValor("Livro", "LivrosDisponiveis", id);
+        }
+        
+        public static void IncrementaNLivrosDisp(int id)
+        {
+            ComunicacaoBD.IncrementaValor("Livro", "LivrosDisponiveis", id);
+        }
     }
 }

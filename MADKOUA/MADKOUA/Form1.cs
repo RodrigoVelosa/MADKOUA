@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//using MADKOUA_BD;
 
 namespace MADKOUA
 {
@@ -17,6 +18,8 @@ namespace MADKOUA
             InitializeComponent();
 
             dataGridView1.DataSource=Livro.ListaLivrosProcura("Titulo", "");
+
+
         }
 
     }
