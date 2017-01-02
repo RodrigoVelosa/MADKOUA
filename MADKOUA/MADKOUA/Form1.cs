@@ -16,10 +16,8 @@ namespace MADKOUA
         public Form1()
         {
             InitializeComponent();
-            Livro.DecrementaNLivrosDisp(3);
-            dataGridView1.DataSource = Requisicao.ListaRequisicao();
 
-
+            dataGridView1.DataSource = Autor.ListaAutores();
         }
 
     }

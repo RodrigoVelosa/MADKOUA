@@ -16,7 +16,7 @@ namespace MADKOUA_BD
 
         public static void Elimina(String Tabela, int ID)
         {
-            BD.ExecutaUpdateQuery("DELETE FROM " + Tabela + "WHERE ID = " + ID);
+            BD.ExecutaUpdateQuery("DELETE FROM " + Tabela + " WHERE ID = " + ID);
         }
         public static DataTable Lista(String Tabela)
         {
@@ -84,7 +84,7 @@ namespace MADKOUA_BD
         
         public static void Adiciona(String Tabela, String Colunas, String Valores)
         {
-            BD.ExecutaUpdateQuery("INSERT INTO " + Tabela + " Values(" + Colunas + ") VALUES (" + Valores + ")");
+            BD.ExecutaUpdateQuery("INSERT INTO " + Tabela + " (" + Colunas + ") VALUES (" + Valores + ")");
         }
 
     }

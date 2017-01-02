@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdicionaBD.cs" />
     <Compile Include="Autor.cs" />
     <Compile Include="BDRecorder.cs" />
     <Compile Include="ComunicaBD.cs" />
