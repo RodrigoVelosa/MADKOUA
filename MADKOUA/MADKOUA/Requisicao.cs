@@ -10,8 +10,12 @@ namespace MADKOUA
 {
     class Requisicao : ItemBD
     {
-        public int Livro_ID { get; set; }
-        public int Requisitante_ID { get; set; }
+
+        public Requisicao() { }
+
+        public int ID { get; set; }
+        public Livro livro { get; set; }
+        public Requisitante requisitante { get; set; }
         public DateTime Data_Levantamento { get; set; }
         public DateTime Data_Entrega { get; set; }
         public String Estado { get; set; }
@@ -19,7 +23,7 @@ namespace MADKOUA
         public void AdicionaBD()
         {
             String Colunas = "Livro_ID, Requisitante_ID, Data_L, Data_E, Estado";
-            String Valores = "'" + Livro_ID + "','" + Requisitante_ID + "','" + Data_Levantamento + "','" + Data_Entrega + "','" + Estado + "'";
+            String Valores = "'" + livro.ID + "','" + requisitante.ID + "','" + Data_Levantamento + "','" + Data_Entrega + "','" + Estado + "'";
             ComunicacaoBD.Adiciona("Requisicao", Colunas, Valores);
         }
 

@@ -11,6 +11,8 @@ namespace MADKOUA
     class Autor : ItemBD
     {
         public Autor() { }
+
+        public int ID { set; get; }
         public String Nome {set; get;}
         public String Apelido {set; get;}
 

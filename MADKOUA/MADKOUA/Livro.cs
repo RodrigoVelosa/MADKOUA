@@ -11,18 +11,20 @@ namespace MADKOUA
     class Livro : ItemBD
     {
         public Livro() { }
+
+        public int ID { set; get; }
         public String Titulo { get; set; }
         public int Edicao { get; set; }
         public String ISBN { get; set; }
         public int NLivrosDisp { get; set; }
-        public int ID_Autor { get; set; }
-        public int ID_Editora { get; set; }
+        public Autor autor { set; get; }
+        public Editora editora { set; get; }
 
 
         public void AdicionaBD()
         {
             String Colunas = "Autor_ID, Editora_ID, Titulo, Edicao, ISBN, NLivrosDisp";
-            String Valores = "'" + ID_Autor + "','" + ID_Editora + "','" + Titulo + "','" + Edicao + "','" + ISBN + "','" + NLivrosDisp + "'";
+            String Valores = "'" + autor.ID + "','" + editora.ID + "','" + Titulo + "','" + Edicao + "','" + ISBN + "','" + NLivrosDisp + "'";
             ComunicacaoBD.Adiciona("Livro", Colunas, Valores);            
         }
         

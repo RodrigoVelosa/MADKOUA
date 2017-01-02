@@ -12,6 +12,7 @@ namespace MADKOUA
     {
         public Requisitante() { }
 
+        public int ID { set; get; }
         public String Nome { set; get; }
         public String CodigoUtilizador { set; get; }
         public String Password { set; get; }

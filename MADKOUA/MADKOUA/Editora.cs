@@ -11,6 +11,8 @@ namespace MADKOUA
     class Editora : ItemBD
     {
         public Editora() { }
+
+        public int ID { set; get; }
         public String Nome { set; get; }
         public String Morada { set; get; }
 

@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace MADKOUA
 {
-    interface ItemBD
+    public interface ItemBD
     {
-
         void AdicionaBD();
     }
 }
