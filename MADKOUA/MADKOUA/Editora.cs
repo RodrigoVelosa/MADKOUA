@@ -34,7 +34,7 @@ namespace MADKOUA
         {
             return ComunicacaoBD.Lista("Editora");
         }
-        public static DataTable ListaEditorasProcura(String Coluna, String Expressao)
+        public static DataTable ListaEditoras(String Coluna, String Expressao)
         {
             return ComunicacaoBD.ListaProcura("Editora", Coluna, Expressao);
         }
