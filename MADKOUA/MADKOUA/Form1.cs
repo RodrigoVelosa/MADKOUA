@@ -17,7 +17,10 @@ namespace MADKOUA
         {
             InitializeComponent();
 
+            Autor.MudaNome(1, "José Luís Foufinho");
+
             dataGridView1.DataSource = Autor.ListaAutores();
+
         }
 
     }

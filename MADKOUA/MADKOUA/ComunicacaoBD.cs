@@ -71,12 +71,12 @@ namespace MADKOUA_BD
             BDLog.Log("Incrementado o valor da " + Coluna + " da " + Tabela + " com o ID " + id);
         }
       
-        public static void AlteraValorString(String Tabela, String Coluna, int id, String NovoValor)
+        public static void AlteraValor(String Tabela, String Coluna, int id, String NovoValor)
         {
             BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = '" + NovoValor + "' WHERE ID = " + id);
             BDLog.Log("Alterado o valor da " + Coluna + " da " + Tabela + " com o ID " + id + " para o novo valor: " + NovoValor);
         }
-        public static void AlteraValorInteiro(String Tabela, String Coluna, int id, int NovoValor)
+        public static void AlteraValor(String Tabela, String Coluna, int id, int NovoValor)
         {
             BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + NovoValor + " WHERE ID = " + id);
             BDLog.Log("Alterado o valor da " + Coluna + " da " + Tabela + " com o ID " + id + " para o novo valor: " + NovoValor);

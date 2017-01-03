@@ -45,9 +45,19 @@ namespace MADKOUA
             return ComunicacaoBD.Lista("Autor");
         }
 
-        public static DataTable ListaAutoresProcura(String Coluna, String Expressao)
+        public static DataTable ListaAutores(String Coluna, String Expressao)
         {
             return ComunicacaoBD.ListaProcura("Autor", Coluna, Expressao);
+        }
+        
+        public static void MudaNome(int ID, String NovoNome)
+        {
+            ComunicacaoBD.AlteraValor("Autor", "Nome", ID, NovoNome);
+        }
+
+        public static void MudaApelido(int ID, String NovoApelido)
+        {
+            ComunicacaoBD.AlteraValor("Autor", "Apelido", ID, NovoApelido);
         }
     }
 }
