@@ -12,7 +12,25 @@ namespace MADKOUA
     {
         public Livro() { }
 
-        public int ID { set; get; }
+        public Livro(int id) { ID = id; }
+
+        public int ID
+        {
+            get
+            {
+                return ID;
+            }
+            set
+            {
+                DataTable DT = ComunicacaoBD.ListaProcura("Livro", "ID", value.ToString());
+                Titulo = DT.Rows[0].Field<String>("Titulo");
+                Edicao = DT.Rows[0].Field<Int32>("Edicao");
+                ISBN = DT.Rows[0].Field<String>("ISBN");
+                NLivrosDisp = DT.Rows[0].Field<Int32>("LivrosDisponiveis");
+                autor = new Autor(DT.Rows[0].Field<Int32>("Autor_ID"));
+                editora = new Editora(DT.Rows[0].Field<Int32>("Editora_ID"));
+            }
+        }
         public String Titulo { get; set; }
         public int Edicao { get; set; }
         public String ISBN { get; set; }

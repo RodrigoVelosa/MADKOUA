@@ -13,7 +13,21 @@ namespace MADKOUA
 
         public Requisicao() { }
 
-        public int ID { get; set; }
+        public Requisicao(int id) { ID = id; }
+
+        public int ID
+        {
+            get { return ID; }
+            set
+            {
+                DataTable DT = ComunicacaoBD.ListaProcura("Requisicao", "ID", value.ToString());
+                livro = new Livro(DT.Rows[0].Field<Int32>("Livro_ID"));
+                requisitante = new Requisitante(DT.Rows[0].Field<Int32>("Requisitante_ID"));
+                Data_Levantamento = DT.Rows[0].Field<DateTime>("Data_L");
+                Data_Entrega = DT.Rows[0].Field<DateTime>("Data_E");
+                Estado = DT.Rows[0].Field<String>("Estado");
+            }
+        }
         public Livro livro { get; set; }
         public Requisitante requisitante { get; set; }
         public DateTime Data_Levantamento { get; set; }
