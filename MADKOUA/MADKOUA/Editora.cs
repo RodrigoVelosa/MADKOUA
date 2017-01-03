@@ -52,6 +52,15 @@ namespace MADKOUA
         {
             return ComunicacaoBD.ListaProcura("Editora", Coluna, Expressao);
         }
-        
+
+        public static void MudaNome(int ID, String NovoNome)
+        {
+            ComunicacaoBD.AlteraValor("Editora", "Nome", ID, NovoNome);
+        }
+
+        public static void MudaMorada(int ID, String NovaMorada)
+        {
+            ComunicacaoBD.AlteraValor("Editora", "Morada", ID, NovaMorada);
+        }
     }
 }
