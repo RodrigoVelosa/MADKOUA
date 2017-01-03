@@ -17,10 +17,12 @@ namespace MADKOUA
 
         public Requisitante(int id) { ID = id; }
 
-        public int ID
+        //Propriedades. Cada uma corresponde a uma coluna na tabela Requisitante da base de dados
+        public int ID 
         {
             get { return ID; }
-
+            //Quando ocorre um set no ID, o resto das propriedades atualizam para que cada uma guarde o valor
+            //que está na base de dados associado ao id passado.
             set
             {
                 DataTable DT = ComunicacaoBD.Lista("Requisitante", "ID", value.ToString());
@@ -41,6 +43,7 @@ namespace MADKOUA
         public String CodigoUtilizador { set; get; }
         public String Password { set; get; }
 
+        //Método que adiciona este requisitante a base de dados
         public void AdicionaBD()
         {
             String Colunas = "Nome, CodigoUtilizador, Password";
@@ -48,35 +51,42 @@ namespace MADKOUA
             ComunicacaoBD.Adiciona("Requisitante", Colunas, Valores);
         }
 
+        #region "Métodos estáticos"
+        //Este método elimina o requisitante com o ID Requisitante_ID
         public static void EliminaRequisitante(int Requisitante_ID)
         {
             ComunicacaoBD.Elimina("Requisitante", Requisitante_ID);
         }
 
+        //Este método devolve uma tabela com todos os requisitantes
         public static DataTable ListaRequisitantes()
         {
             return ComunicacaoBD.Lista("Requisitante");
         }
 
+        //Este método devolve uma tabela com todos os requisitantes em que Coluna = Expressao
         public static DataTable ListaRequisitantes(String Coluna, String Expressao)
         {
             return ComunicacaoBD.Lista("Requisitante", Coluna, Expressao);
         }
 
-
-        public static void MudaNome(int ID, String NovoNome)
+        //Este método muda o nome do requisitante com Requisitante_ID para novo nome
+        public static void MudaNome(int Requisitante_ID, String NovoNome)
         {
-            ComunicacaoBD.AlteraValor("Requisitante", "Nome", ID, NovoNome);
+            ComunicacaoBD.AlteraValor("Requisitante", "Nome", Requisitante_ID, NovoNome);
         }
 
-        public static void MudaCodigoUtilizador(int ID, String NovoCodigoUtilizador)
+        //Este método muda o CodigoUtilizador do Requisitante com Requisitante_ID para NovoCodigoUtilizador
+        public static void MudaCodigoUtilizador(int Requisitante_ID, String NovoCodigoUtilizador)
         {
-            ComunicacaoBD.AlteraValor("Requisitante", "CodigoUtilizador", ID, NovoCodigoUtilizador);
+            ComunicacaoBD.AlteraValor("Requisitante", "CodigoUtilizador", Requisitante_ID, NovoCodigoUtilizador);
         }
 
-        public static void MudaPassword(int ID, String NovaPassword)
+        //Este método muda a password do requisitante com Requisitante_ID para NovaPassword
+        public static void MudaPassword(int Requisitante_ID, String NovaPassword)
         {
-            ComunicacaoBD.AlteraValor("Requisitante", "Password", ID, NovaPassword);
+            ComunicacaoBD.AlteraValor("Requisitante", "Password", Requisitante_ID, NovaPassword);
         }
+        #endregion
     }
 }

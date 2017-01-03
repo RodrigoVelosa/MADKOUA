@@ -17,9 +17,12 @@ namespace MADKOUA
 
         public Requisicao(int id) { ID = id; }
 
-        public int ID
+        //Propriedades. Cada uma corresponde a uma coluna da tabela Requisicao na base de dados.
+        public int ID 
         {
             get { return ID; }
+            //Quando ocorre um set no ID, o resto das propriedades atualizam para que cada uma guarde o valor
+            //que está na base de dados associado ao id passado.
             set
             {
                 DataTable DT = ComunicacaoBD.Lista("Requisicao", "ID", value.ToString());
@@ -43,6 +46,7 @@ namespace MADKOUA
         public DateTime Data_Entrega { get; set; }
         public String Estado { get; set; }
 
+        //Este método adiciona esta requisicao a base de dados.
         public void AdicionaBD()
         {
             String Colunas = "Livro_ID, Requisitante_ID, Data_L, Data_E, Estado";
@@ -50,35 +54,41 @@ namespace MADKOUA
             ComunicacaoBD.Adiciona("Requisicao", Colunas, Valores);
         }
 
+        #region "Métodos estáticos"
+        //Este método elimina a Requisicao com o ID Requisicao_ID
         public static void EliminaRequisicao(int Requisicao_ID)
         {
             ComunicacaoBD.Elimina("Requisicao", Requisicao_ID);
-
         }
 
+        //Este método devolve uma tabela com todas as requisicoes
         public static DataTable ListaRequisicao()
         {
             return ComunicacaoBD.Lista("Requisicao");
         }
 
+        //Este método devolve uma tabela com todas as requisicoes em que Coluna = Expressao
         public static DataTable ListaRequisicao(String Coluna, String Expressao)
         {
             return ComunicacaoBD.Lista("Requisicao", Coluna, Expressao);
         }
-
-        public static void MudaEstado(int id, String NovoEstado)
+        //Este método muda o estado da requisicao com o ID Requisicao_ID para novo estado
+        public static void MudaEstado(int Requisicao_ID, String NovoEstado)
         {
-            ComunicacaoBD.AlteraValor("Requisicao", "Estado", id, NovoEstado);
+            ComunicacaoBD.AlteraValor("Requisicao", "Estado", Requisicao_ID, NovoEstado);
         }
 
-        public static void MudaDataEntrega(int id, DateTime NovaData)
+        //Este método muda a data de entrega da requisicao com o ID Requisicao_ID para a NovaData
+        public static void MudaDataEntrega(int Requisicao_ID, DateTime NovaData)
         {
-            ComunicacaoBD.AlteraValor("Requisicao", "Data_E", id, NovaData.ToString());
+            ComunicacaoBD.AlteraValor("Requisicao", "Data_E", Requisicao_ID, NovaData.ToString());
         }
 
-        public static void MudaDataLevantamento(int id, DateTime NovaData)
+        //Este método muda a data de levantamento da requisicao com o ID Requisicao_ID para a NovaData
+        public static void MudaDataLevantamento(int Requisicao_ID, DateTime NovaData)
         {
-            ComunicacaoBD.AlteraValor("Requisicao", "Data_L", id, NovaData.ToString());
+            ComunicacaoBD.AlteraValor("Requisicao", "Data_L", Requisicao_ID, NovaData.ToString());
         }
+        #endregion
     }
 }
