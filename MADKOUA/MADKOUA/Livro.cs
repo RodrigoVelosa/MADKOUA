@@ -68,5 +68,30 @@ namespace MADKOUA
         {
             ComunicacaoBD.IncrementaValor("Livro", "LivrosDisponiveis", id);
         }
+
+        public static void MudaTitulo(int ID, String NovoTitulo)
+        {
+            ComunicacaoBD.AlteraValor("Livro", "Titulo", ID, NovoTitulo);
+        }
+
+        public static void MudaEdicao(int ID, int NovaEdicao)
+        {
+            ComunicacaoBD.AlteraValor("Livro", "Edicao", ID, NovaEdicao);
+        }
+
+        public static void MudaISBN(int ID, int NovoISBN)
+        {
+            ComunicacaoBD.AlteraValor("Livro", "ISBN", ID, NovoISBN);
+        }
+        
+        public static void MudaAutor(int ID, Autor NovoAutor)
+        {
+            ComunicacaoBD.AlteraValor("Livro", "Autor_ID", ID, NovoAutor.ID);
+        }
+
+        public static void MudaEditora(int ID, Editora NovaEditora)
+        {
+            ComunicacaoBD.AlteraValor("Livro", "Editora_ID", ID, NovaEditora.ID);
+        }
     }
 }
