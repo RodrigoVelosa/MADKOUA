@@ -12,7 +12,18 @@ namespace MADKOUA
     {
         public Autor() { }
 
-        public int ID { set; get; }
+        public Autor(int id) { ID = id; }
+
+        public int ID
+        {
+            get { return ID; }
+            set
+            {
+                DataTable DT = ComunicacaoBD.ListaProcura("Autor", "ID", value.ToString());
+                Nome = DT.Rows[0].Field<String>("Nome");
+                Apelido = DT.Rows[0].Field<String>("Apelido");
+            }
+        }
         public String Nome {set; get;}
         public String Apelido {set; get;}
 

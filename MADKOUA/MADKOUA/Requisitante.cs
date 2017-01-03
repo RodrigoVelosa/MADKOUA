@@ -12,7 +12,20 @@ namespace MADKOUA
     {
         public Requisitante() { }
 
-        public int ID { set; get; }
+        public Requisitante(int id) { ID = id; }
+
+        public int ID
+        {
+            get { return ID; }
+
+            set
+            {
+                DataTable DT = ComunicacaoBD.ListaProcura("Requisitante", "ID", value.ToString());
+                Nome = DT.Rows[0].Field<String>("Nome");
+                CodigoUtilizador = DT.Rows[0].Field<String>("CodigoUtilizador");
+                Password = DT.Rows[0].Field<String>("Password");
+            }
+        }
         public String Nome { set; get; }
         public String CodigoUtilizador { set; get; }
         public String Password { set; get; }
