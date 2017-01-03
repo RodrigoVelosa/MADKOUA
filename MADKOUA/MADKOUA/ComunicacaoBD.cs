@@ -60,15 +60,15 @@ namespace MADKOUA_BD
         public static void DecrementaValor(String Tabela, String Coluna, int id)
         {
             int Valor = DevolveInteiro(Tabela, Coluna, id);
-            BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + --Valor + " WHERE ID = " + id);
-            BDLog.Log("Decrementado o valor da " + Coluna + " da " + Tabela + " com o ID " + id);
+            int Resultado = BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + --Valor + " WHERE ID = " + id);
+            if(Resultado == 1) { BDLog.Log("Decrementado o valor da " + Coluna + " da " + Tabela + " com o ID " + id); }
         }
 
         public static void IncrementaValor(String Tabela, String Coluna, int id)
         {
             int Valor = DevolveInteiro(Tabela, Coluna, id);
-            BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + ++Valor + " WHERE ID = " + id);
-            BDLog.Log("Incrementado o valor da " + Coluna + " da " + Tabela + " com o ID " + id);
+            int Resultado = BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + ++Valor + " WHERE ID = " + id);
+            if(Resultado == 1) { BDLog.Log("Incrementado o valor da " + Coluna + " da " + Tabela + " com o ID " + id); }
         }
       
         public static void AlteraValor(String Tabela, String Coluna, int id, String NovoValor)
