@@ -52,5 +52,20 @@ namespace MADKOUA
             return ComunicacaoBD.ListaProcura("Requisitante", Coluna, Expressao);
         }
 
+
+        public static void MudaNome(int ID, String NovoNome)
+        {
+            ComunicacaoBD.AlteraValor("Requisitante", "Nome", ID, NovoNome);
+        }
+
+        public static void MudaCodigoUtilizador(int ID, String NovoCodigoUtilizador)
+        {
+            ComunicacaoBD.AlteraValor("Requisitante", "CodigoUtilizador", ID, NovoCodigoUtilizador);
+        }
+
+        public static void MudaPassword(int ID, String NovaPassword)
+        {
+            ComunicacaoBD.AlteraValor("Requisitante", "Password", ID, NovaPassword);
+        }
     }
 }
