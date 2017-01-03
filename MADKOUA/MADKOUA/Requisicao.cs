@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MADKOUA_BD;
+using MADKOUA_LOG;
 
 namespace MADKOUA
 {
     class Requisicao : ItemBD
     {
+        private Logger FicheiroLog = new Logger(new FicheiroRecorder());
 
         public Requisicao() { }
 
@@ -20,12 +22,19 @@ namespace MADKOUA
             get { return ID; }
             set
             {
-                DataTable DT = ComunicacaoBD.ListaProcura("Requisicao", "ID", value.ToString());
-                livro = new Livro(DT.Rows[0].Field<Int32>("Livro_ID"));
-                requisitante = new Requisitante(DT.Rows[0].Field<Int32>("Requisitante_ID"));
-                Data_Levantamento = DT.Rows[0].Field<DateTime>("Data_L");
-                Data_Entrega = DT.Rows[0].Field<DateTime>("Data_E");
-                Estado = DT.Rows[0].Field<String>("Estado");
+                DataTable DT = ComunicacaoBD.Lista("Requisicao", "ID", value.ToString());
+                try
+                {
+                    livro = new Livro(DT.Rows[0].Field<Int32>("Livro_ID"));
+                    requisitante = new Requisitante(DT.Rows[0].Field<Int32>("Requisitante_ID"));
+                    Data_Levantamento = DT.Rows[0].Field<DateTime>("Data_L");
+                    Data_Entrega = DT.Rows[0].Field<DateTime>("Data_E");
+                    Estado = DT.Rows[0].Field<String>("Estado");
+                }
+                catch(IndexOutOfRangeException e)
+                {
+                    FicheiroLog.Log(DateTime.Now + ": " + e.Message + " Classe Requisicao. Propriedade ID (set)");
+                }
             }
         }
         public Livro livro { get; set; }
@@ -54,7 +63,7 @@ namespace MADKOUA
 
         public static DataTable ListaRequisicao(String Coluna, String Expressao)
         {
-            return ComunicacaoBD.ListaProcura("Requisicao", Coluna, Expressao);
+            return ComunicacaoBD.Lista("Requisicao", Coluna, Expressao);
         }
 
         public static void MudaEstado(int id, String NovoEstado)

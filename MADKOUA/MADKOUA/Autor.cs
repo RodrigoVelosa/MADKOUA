@@ -1,4 +1,5 @@
 ﻿using MADKOUA_BD;
+using MADKOUA_LOG;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,6 +11,8 @@ namespace MADKOUA
 {
     class Autor : ItemBD
     {
+        private Logger FicheiroLog = new Logger(new FicheiroRecorder());
+
         public Autor() { }
 
         public Autor(int id) { ID = id; }
@@ -19,9 +22,17 @@ namespace MADKOUA
             get { return ID; }
             set
             {
-                DataTable DT = ComunicacaoBD.ListaProcura("Autor", "ID", value.ToString());
-                Nome = DT.Rows[0].Field<String>("Nome");
-                Apelido = DT.Rows[0].Field<String>("Apelido");
+                DataTable DT = ComunicacaoBD.Lista("Autor", "ID", value.ToString());
+                try
+                {
+                    Nome = DT.Rows[0].Field<String>("Nome");
+                    Apelido = DT.Rows[0].Field<String>("Apelido");
+                }
+                catch(IndexOutOfRangeException e)
+                {
+                    FicheiroLog.Log(DateTime.Now + ": " + e.Message + " Classe Autor. Propriedade ID (set)");
+                }
+
             }
         }
         public String Nome {set; get;}
@@ -47,7 +58,7 @@ namespace MADKOUA
 
         public static DataTable ListaAutores(String Coluna, String Expressao)
         {
-            return ComunicacaoBD.ListaProcura("Autor", Coluna, Expressao);
+            return ComunicacaoBD.Lista("Autor", Coluna, Expressao);
         }
         
         public static void MudaNome(int ID, String NovoNome)

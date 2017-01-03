@@ -22,7 +22,7 @@ namespace MADKOUA_BD
         {
             return BD.ExecutaQuery("SELECT * FROM " + Tabela);
         }
-        public static DataTable ListaProcura(String Tabela, String Coluna, String Procura)
+        public static DataTable Lista(String Tabela, String Coluna, String Procura)
         {
             return BD.ExecutaQuery("SELECT * FROM " + Tabela + " WHERE " + Coluna + " LIKE '" + Procura + "%'");
         }
@@ -73,13 +73,13 @@ namespace MADKOUA_BD
       
         public static void AlteraValor(String Tabela, String Coluna, int id, String NovoValor)
         {
-            BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = '" + NovoValor + "' WHERE ID = " + id);
-            BDLog.Log("Alterado o valor da " + Coluna + " da " + Tabela + " com o ID " + id + " para o novo valor: " + NovoValor);
+            int Resultado = BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = '" + NovoValor + "' WHERE ID = " + id);
+            if(Resultado == 1) { BDLog.Log("Alterado o valor da " + Coluna + " da " + Tabela + " com o ID " + id + " para o novo valor: " + NovoValor); }
         }
         public static void AlteraValor(String Tabela, String Coluna, int id, int NovoValor)
         {
-            BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + NovoValor + " WHERE ID = " + id);
-            BDLog.Log("Alterado o valor da " + Coluna + " da " + Tabela + " com o ID " + id + " para o novo valor: " + NovoValor);
+            int Resultado = BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + NovoValor + " WHERE ID = " + id);
+            if(Resultado == 1) { BDLog.Log("Alterado o valor da " + Coluna + " da " + Tabela + " com o ID " + id + " para o novo valor: " + NovoValor); }
         }
         
         public static void Adiciona(String Tabela, String Colunas, String Valores)

@@ -5,11 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using MADKOUA_BD;
+using MADKOUA_LOG;
 
 namespace MADKOUA
 {
     class Editora : ItemBD
     {
+
+        private Logger FicheiroLog = new Logger(new FicheiroRecorder());
+
+
         public Editora() { }
 
         public Editora(int id) { ID = id; }
@@ -22,9 +27,16 @@ namespace MADKOUA
             }
             set
             {
-                DataTable DT = ComunicacaoBD.ListaProcura("Editora", "ID", value.ToString());
-                Nome = DT.Rows[0].Field<String>("Nome");
-                Morada = DT.Rows[0].Field<String>("Morada");
+                DataTable DT = ComunicacaoBD.Lista("Editora", "ID", value.ToString());
+                try
+                {
+                    Nome = DT.Rows[0].Field<String>("Nome");
+                    Morada = DT.Rows[0].Field<String>("Morada");
+                }
+                catch(IndexOutOfRangeException e)
+                {
+                    FicheiroLog.Log(DateTime.Now + ": " + e.Message + " Classe Editora. Propriedade ID (set)");
+                }
             }
         }
 
@@ -50,7 +62,7 @@ namespace MADKOUA
         }
         public static DataTable ListaEditoras(String Coluna, String Expressao)
         {
-            return ComunicacaoBD.ListaProcura("Editora", Coluna, Expressao);
+            return ComunicacaoBD.Lista("Editora", Coluna, Expressao);
         }
 
         public static void MudaNome(int ID, String NovoNome)
