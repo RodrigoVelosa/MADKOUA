@@ -12,12 +12,24 @@ namespace MADKOUA
     {
         public Editora() { }
 
-        public int ID { set; get; }
+        public Editora(int id) { ID = id; }
+
+        public int ID
+        {
+            get
+            {
+                return ID;
+            }
+            set
+            {
+                DataTable DT = ComunicacaoBD.ListaProcura("Editora", "ID", value.ToString());
+                Nome = DT.Rows[0].Field<String>("Nome");
+                Morada = DT.Rows[0].Field<String>("Morada");
+            }
+        }
+
         public String Nome { set; get; }
         public String Morada { set; get; }
-
-
-        
 
 
         public void AdicionaBD()
@@ -26,7 +38,6 @@ namespace MADKOUA
             String Valores = "'" + Nome + "', '" + Morada + "'";
             ComunicacaoBD.Adiciona("Editora", Colunas, Valores);
         }
-
 
 
         public static void EliminaEditora(int Editora_ID)
