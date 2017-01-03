@@ -61,25 +61,57 @@ namespace MADKOUA_BD
         {
             int Valor = DevolveInteiro(Tabela, Coluna, id);
             int Resultado = BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + --Valor + " WHERE ID = " + id);
-            if(Resultado == 1) { BDLog.Log("Decrementado o valor da " + Coluna + " da " + Tabela + " com o ID " + id); }
+            if(Resultado == 0)
+            {
+                FicheiroLog.Log(DateTime.Now + ": UPDATE na coluna " + Coluna + " da tabela " + Tabela + 
+                    " com o ID " + id + " não foi realizado com sucesso. Class ComunicacaoBD. Método DecrementaValor.");
+            }
+            else
+            {
+                BDLog.Log("Decrementado o valor da " + Coluna + " da " + Tabela + " com o ID " + id);
+            }
         }
 
         public static void IncrementaValor(String Tabela, String Coluna, int id)
         {
             int Valor = DevolveInteiro(Tabela, Coluna, id);
             int Resultado = BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + ++Valor + " WHERE ID = " + id);
-            if(Resultado == 1) { BDLog.Log("Incrementado o valor da " + Coluna + " da " + Tabela + " com o ID " + id); }
+            if(Resultado == 0)
+            {
+                FicheiroLog.Log(DateTime.Now + ": UPDATE na coluna " + Coluna + " da tabela " + Tabela + 
+                    " com o ID " + id + " não foi realizado com sucesso. Class ComunicacaoBD. Método IncrementaValor.");
+            }
+            else
+            {
+                BDLog.Log("Incrementado o valor da " + Coluna + " da " + Tabela + " com o ID " + id);
+            }
         }
       
         public static void AlteraValor(String Tabela, String Coluna, int id, String NovoValor)
         {
             int Resultado = BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = '" + NovoValor + "' WHERE ID = " + id);
-            if(Resultado == 1) { BDLog.Log("Alterado o valor da " + Coluna + " da " + Tabela + " com o ID " + id + " para o novo valor: " + NovoValor); }
+            if(Resultado == 0)
+            {
+                FicheiroLog.Log(DateTime.Now + ": UPDATE na coluna " + Coluna + " da tabela " + Tabela + 
+                    " com o ID " + id + " não foi realizado com sucesso. Class ComunicacaoBD. Método AlteraValor (String).");
+            }
+            else
+            {
+                BDLog.Log("Alterado o valor da " + Coluna + " da " + Tabela + " com o ID " + id + " para o novo valor: " + NovoValor);
+            }
         }
         public static void AlteraValor(String Tabela, String Coluna, int id, int NovoValor)
         {
             int Resultado = BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + NovoValor + " WHERE ID = " + id);
-            if(Resultado == 1) { BDLog.Log("Alterado o valor da " + Coluna + " da " + Tabela + " com o ID " + id + " para o novo valor: " + NovoValor); }
+            if (Resultado == 0)
+            {
+                FicheiroLog.Log(DateTime.Now + ": UPDATE na coluna " + Coluna + " da tabela " + Tabela + 
+                    " com o ID " + id + " não foi realizado com sucesso. Class ComunicacaoBD. Método AlteraValor (Inteiro).");
+            }
+            else
+            {
+                BDLog.Log("Alterado o valor da " + Coluna + " da " + Tabela + " com o ID " + id + " para o novo valor: " + NovoValor);
+            }
         }
         
         public static void Adiciona(String Tabela, String Colunas, String Valores)
