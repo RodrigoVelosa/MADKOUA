@@ -66,5 +66,10 @@ namespace MADKOUA
         {
             ComunicacaoBD.AlteraValor("Requisicao", "Data_E", id, NovaData.ToString());
         }
+
+        public static void MudaDataLevantamento(int id, DateTime NovaData)
+        {
+            ComunicacaoBD.AlteraValor("Requisicao", "Data_L", id, NovaData.ToString());
+        }
     }
 }
