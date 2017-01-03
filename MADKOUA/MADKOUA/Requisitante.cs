@@ -5,11 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MADKOUA_BD;
+using MADKOUA_LOG;
 
 namespace MADKOUA
 {
     class Requisitante : ItemBD
     {
+        private Logger FicheiroLog = new Logger(new FicheiroRecorder());
+
         public Requisitante() { }
 
         public Requisitante(int id) { ID = id; }
@@ -20,10 +23,18 @@ namespace MADKOUA
 
             set
             {
-                DataTable DT = ComunicacaoBD.ListaProcura("Requisitante", "ID", value.ToString());
-                Nome = DT.Rows[0].Field<String>("Nome");
-                CodigoUtilizador = DT.Rows[0].Field<String>("CodigoUtilizador");
-                Password = DT.Rows[0].Field<String>("Password");
+                DataTable DT = ComunicacaoBD.Lista("Requisitante", "ID", value.ToString());
+                try
+                {
+                    Nome = DT.Rows[0].Field<String>("Nome");
+                    CodigoUtilizador = DT.Rows[0].Field<String>("CodigoUtilizador");
+                    Password = DT.Rows[0].Field<String>("Password");
+                }
+                catch(IndexOutOfRangeException e)
+                {
+                    FicheiroLog.Log(DateTime.Now + ": " + e.Message + " Classe Requisitante. Propriedade ID (set)");
+                }
+
             }
         }
         public String Nome { set; get; }
@@ -49,7 +60,7 @@ namespace MADKOUA
 
         public static DataTable ListaRequisitantes(String Coluna, String Expressao)
         {
-            return ComunicacaoBD.ListaProcura("Requisitante", Coluna, Expressao);
+            return ComunicacaoBD.Lista("Requisitante", Coluna, Expressao);
         }
 
 

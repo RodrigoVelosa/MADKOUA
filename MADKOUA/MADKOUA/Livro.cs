@@ -5,11 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MADKOUA_BD;
+using MADKOUA_LOG;
 
 namespace MADKOUA
 {
     class Livro : ItemBD
     {
+        private Logger FicheiroLog = new Logger(new FicheiroRecorder());
+
         public Livro() { }
 
         public Livro(int id) { ID = id; }
@@ -22,13 +25,20 @@ namespace MADKOUA
             }
             set
             {
-                DataTable DT = ComunicacaoBD.ListaProcura("Livro", "ID", value.ToString());
-                Titulo = DT.Rows[0].Field<String>("Titulo");
-                Edicao = DT.Rows[0].Field<Int32>("Edicao");
-                ISBN = DT.Rows[0].Field<String>("ISBN");
-                NLivrosDisp = DT.Rows[0].Field<Int32>("LivrosDisponiveis");
-                autor = new Autor(DT.Rows[0].Field<Int32>("Autor_ID"));
-                editora = new Editora(DT.Rows[0].Field<Int32>("Editora_ID"));
+                DataTable DT = ComunicacaoBD.Lista("Livro", "ID", value.ToString());
+                try
+                {
+                    Titulo = DT.Rows[0].Field<String>("Titulo");
+                    Edicao = DT.Rows[0].Field<Int32>("Edicao");
+                    ISBN = DT.Rows[0].Field<String>("ISBN");
+                    NLivrosDisp = DT.Rows[0].Field<Int32>("LivrosDisponiveis");
+                    autor = new Autor(DT.Rows[0].Field<Int32>("Autor_ID"));
+                    editora = new Editora(DT.Rows[0].Field<Int32>("Editora_ID"));
+                }
+                catch(IndexOutOfRangeException e)
+                {
+                    FicheiroLog.Log(DateTime.Now + ": " + e.Message + " Classe Livro. Propriedade ID (set)");
+                }
             }
         }
         public String Titulo { get; set; }
@@ -56,7 +66,7 @@ namespace MADKOUA
         }
         public static DataTable ListaLivros(String Coluna, String Expressao)
         {
-            return ComunicacaoBD.ListaProcura("Livro", Coluna, Expressao);
+            return ComunicacaoBD.Lista("Livro", Coluna, Expressao);
         }
         public static void DecrementaNLivrosDisp(int id)
         {
