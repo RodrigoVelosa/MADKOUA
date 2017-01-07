@@ -51,6 +51,21 @@ namespace MADKOUA
             ComunicacaoBD.Adiciona("Requisitante", Colunas, Valores);
         }
 
+        public void SetByCodigoUtilizador(String CodigoUtilizador)
+        {
+            DataTable DT = ComunicacaoBD.Lista("Requisitante", "CodigoUtilizador", CodigoUtilizador);
+            try
+            {
+                ID = DT.Rows[0].Field<Int32>("ID");
+                Nome = DT.Rows[0].Field<String>("Nome");
+                Password = DT.Rows[0].Field<String>("Password");
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                FicheiroLog.Log(DateTime.Now + ": " + e.Message + " Classe Requisitante. Propriedade CodigoUtilizador (set)");
+            }
+        }
+
         #region "Métodos estáticos"
         //Este método elimina o requisitante com o ID Requisitante_ID
         public static void EliminaRequisitante(int Requisitante_ID)
