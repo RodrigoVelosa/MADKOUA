@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MADKOUA
 {
     //Padrão de desenho Facade. Esta classe simplifica a adição de novos elementos a base de dados.
-    class AdicionaBD
+    public class AdicionaBD
     {
         private Autor autor;
         private Livro livro;

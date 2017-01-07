@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MADKOUA
 {
-    class Autor : ItemBD
+    public class Autor : ItemBD
     {
         private Logger FicheiroLog = new Logger(new FicheiroRecorder());
 
@@ -17,14 +17,17 @@ namespace MADKOUA
 
         public Autor(int id) { ID = id; }
 
+        private int id;
+
         //Propriedades da classe. Cada propriedade corresponde a uma coluna na tabela Autor da base de dados
         public int ID 
         {
-            get { return ID; }
+            get { return id; }
             //Quando ocorre um set no ID, o resto das propriedades atualizam para que cada uma guarde o valor
             //que está na base de dados associado ao id passado.
             set
             {
+                id = value;
                 DataTable DT = ComunicacaoBD.Lista("Autor", "ID", value.ToString());
                 try
                 {

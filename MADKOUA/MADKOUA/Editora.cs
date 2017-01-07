@@ -9,7 +9,7 @@ using MADKOUA_LOG;
 
 namespace MADKOUA
 {
-    class Editora : ItemBD
+    public class Editora : ItemBD
     {
 
         private Logger FicheiroLog = new Logger(new FicheiroRecorder());
@@ -18,17 +18,20 @@ namespace MADKOUA
 
         public Editora(int id) { ID = id; }
 
+        private int id;
+
         //Propriedades. Cada uma corresponde a uma coluna da tabela Editora na base de dados.
         public int ID 
         {
             get
             {
-                return ID;
+                return id;
             }
             //Quando ocorre um set no ID, o resto das propriedades atualizam para que cada uma guarde o valor
             //que está na base de dados associado ao id passado.
             set
             {
+                id = value;
                 DataTable DT = ComunicacaoBD.Lista("Editora", "ID", value.ToString());
                 try
                 {
