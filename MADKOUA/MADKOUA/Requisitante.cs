@@ -18,29 +18,27 @@ namespace MADKOUA
         public Requisitante(int id) { ID = id; }
 
         //Propriedades. Cada uma corresponde a uma coluna na tabela Requisitante da base de dados
-        public int ID 
+        public int ID { set; get; }
+        public String CodigoUtilizador
         {
-            get { return ID; }
-            //Quando ocorre um set no ID, o resto das propriedades atualizam para que cada uma guarde o valor
-            //que está na base de dados associado ao id passado.
+            get { return CodigoUtilizador; }
             set
             {
-                DataTable DT = ComunicacaoBD.Lista("Requisitante", "ID", value.ToString());
+                DataTable DT = ComunicacaoBD.Lista("Requisitante", "CodigoUtilizador", value.ToString());
                 try
                 {
+                    ID = DT.Rows[0].Field<Int32>("ID");
                     Nome = DT.Rows[0].Field<String>("Nome");
-                    CodigoUtilizador = DT.Rows[0].Field<String>("CodigoUtilizador");
                     Password = DT.Rows[0].Field<String>("Password");
                 }
-                catch(IndexOutOfRangeException e)
+                catch (IndexOutOfRangeException e)
                 {
-                    FicheiroLog.Log(DateTime.Now + ": " + e.Message + " Classe Requisitante. Propriedade ID (set)");
+                    FicheiroLog.Log(DateTime.Now + ": " + e.Message + " Classe Requisitante. Propriedade CodigoUtilizador (set)");
                 }
-
             }
         }
         public String Nome { set; get; }
-        public String CodigoUtilizador { set; get; }
+        //public String CodigoUtilizador { set; get; }
         public String Password { set; get; }
 
         //Método que adiciona este requisitante a base de dados
