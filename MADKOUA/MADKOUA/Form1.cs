@@ -20,6 +20,8 @@ namespace MADKOUA
 
             dataGridView1.DataSource = Autor.ListaAutores();
 
+            MessageBox.Show(Requisitante.Verifica("2020112", "qwerty").ToString());
+            MessageBox.Show(Requisitante.Verifica("2020112", "qwety").ToString());
         }
 
     }

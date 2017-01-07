@@ -87,6 +87,12 @@ namespace MADKOUA
         {
             ComunicacaoBD.AlteraValor("Requisitante", "Password", Requisitante_ID, NovaPassword);
         }
+
+        public static bool Verifica(String CodigoUtilizador, String Password)
+        {
+            DataTable DT = ListaRequisitantes("CodigoUtilizador", CodigoUtilizador);
+            return Password == DT.Rows[0].Field<String>("Password");
+        }
         #endregion
     }
 }
