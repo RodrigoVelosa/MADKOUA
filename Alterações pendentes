@@ -1,0 +1,10 @@
++ Adicionar descrição ao livro (Adicionar coluna na tabela, adicionar propriedade na classe livro da dll)
+
++ Adicionar tags. Demonstrar o princípio do aberto/fechado. Ao adicionar este conceito ao projeto, demonstramos que a arquitetura
+está feita de formar a simplificar a expansão da mesma.
+
++ Opção de poder pesquisar não só pelos títulos dos livros mas também pela outras propriedades que um livro tem - colunas da tabela.
+
+- Opção de poder pesquisar não só pelos livros mas também pelas outras tabelas da base de dados.
+Fazer para as que fazem sentido haver pesquisa.
+
