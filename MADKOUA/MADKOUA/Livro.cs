@@ -54,6 +54,15 @@ namespace MADKOUA
         public Autor autor { set; get; }
         public Editora editora { set; get; }
 
+
+        public static readonly String ColunaTitulo = "Titulo";
+        public static readonly String ColunaEdicao = "Edicao";
+        public static readonly String ColunaISBN = "ISBN";
+        public static readonly String ColunaNLivosDisp = "NLivrosDisp";
+        public static readonly String ColunaAutorId = "Autor_ID";
+        public static readonly String ColunaEditoraId = "Editora_ID";
+
+
         //Este método guarda este livro na base de dados
         public void AdicionaBD()
         {
