@@ -20,8 +20,11 @@ namespace MADKOUA
 
             dataGridView1.DataSource = Autor.ListaAutores();
 
-            MessageBox.Show(Requisitante.Verifica("2020112", "qwerty").ToString());
-            MessageBox.Show(Requisitante.Verifica("2020112", "qwety").ToString());
+            AdicionaBD add = new MADKOUA.AdicionaBD();
+            Livro liv = new MADKOUA.Livro(1);
+            Requisitante req = new MADKOUA.Requisitante(1);
+
+            add.AdicionaRequisicao(liv, req, DateTime.Now, DateTime.Now.AddDays(10), "O Canha é tonto!");
         }
 
     }

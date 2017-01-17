@@ -28,7 +28,7 @@ namespace MADKOUA
             set
             {
                 id = value;
-                DataTable DT = ComunicacaoBD.Lista("Requisitante", "ID", value.ToString());
+                DataTable DT = ComunicacaoBD.Instance.Lista("Requisitante", "ID", value.ToString());
                 try
                 {
                     Nome = DT.Rows[0].Field<String>("Nome");
@@ -51,12 +51,12 @@ namespace MADKOUA
         {
             String Colunas = "Nome, CodigoUtilizador, Password";
             String Valores = "'" + Nome + "','" + CodigoUtilizador + "','" + Password + "'";
-            ComunicacaoBD.Adiciona("Requisitante", Colunas, Valores);
+            ComunicacaoBD.Instance.Adiciona("Requisitante", Colunas, Valores);
         }
 
         public void SetByCodigoUtilizador(String CodigoUtilizador)
         {
-            DataTable DT = ComunicacaoBD.Lista("Requisitante", "CodigoUtilizador", CodigoUtilizador);
+            DataTable DT = ComunicacaoBD.Instance.Lista("Requisitante", "CodigoUtilizador", CodigoUtilizador);
             try
             {
                 ID = DT.Rows[0].Field<Int32>("ID");
@@ -73,37 +73,37 @@ namespace MADKOUA
         //Este método elimina o requisitante com o ID Requisitante_ID
         public static void EliminaRequisitante(int Requisitante_ID)
         {
-            ComunicacaoBD.Elimina("Requisitante", Requisitante_ID);
+            ComunicacaoBD.Instance.Elimina("Requisitante", Requisitante_ID);
         }
 
         //Este método devolve uma tabela com todos os requisitantes
         public static DataTable ListaRequisitantes()
         {
-            return ComunicacaoBD.Lista("Requisitante");
+            return ComunicacaoBD.Instance.Lista("Requisitante");
         }
 
         //Este método devolve uma tabela com todos os requisitantes em que Coluna = Expressao
         public static DataTable ListaRequisitantes(String Coluna, String Expressao)
         {
-            return ComunicacaoBD.Lista("Requisitante", Coluna, Expressao);
+            return ComunicacaoBD.Instance.Lista("Requisitante", Coluna, Expressao);
         }
 
         //Este método muda o nome do requisitante com Requisitante_ID para novo nome
         public static void MudaNome(int Requisitante_ID, String NovoNome)
         {
-            ComunicacaoBD.AlteraValor("Requisitante", "Nome", Requisitante_ID, NovoNome);
+            ComunicacaoBD.Instance.AlteraValor("Requisitante", "Nome", Requisitante_ID, NovoNome);
         }
 
         //Este método muda o CodigoUtilizador do Requisitante com Requisitante_ID para NovoCodigoUtilizador
         public static void MudaCodigoUtilizador(int Requisitante_ID, String NovoCodigoUtilizador)
         {
-            ComunicacaoBD.AlteraValor("Requisitante", "CodigoUtilizador", Requisitante_ID, NovoCodigoUtilizador);
+            ComunicacaoBD.Instance.AlteraValor("Requisitante", "CodigoUtilizador", Requisitante_ID, NovoCodigoUtilizador);
         }
 
         //Este método muda a password do requisitante com Requisitante_ID para NovaPassword
         public static void MudaPassword(int Requisitante_ID, String NovaPassword)
         {
-            ComunicacaoBD.AlteraValor("Requisitante", "Password", Requisitante_ID, NovaPassword);
+            ComunicacaoBD.Instance.AlteraValor("Requisitante", "Password", Requisitante_ID, NovaPassword);
         }
 
         public static bool Verifica(String CodigoUtilizador, String Password)

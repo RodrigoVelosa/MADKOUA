@@ -28,7 +28,7 @@ namespace MADKOUA
             set
             {
                 id = value;
-                DataTable DT = ComunicacaoBD.Lista("Requisicao", "ID", value.ToString());
+                DataTable DT = ComunicacaoBD.Instance.Lista("Requisicao", "ID", value.ToString());
                 try
                 {
                     livro = new Livro(DT.Rows[0].Field<Int32>("Livro_ID"));
@@ -53,44 +53,44 @@ namespace MADKOUA
         public void AdicionaBD()
         {
             String Colunas = "Livro_ID, Requisitante_ID, Data_L, Data_E, Estado";
-            String Valores = "'" + livro.ID + "','" + requisitante.ID + "','" + Data_Levantamento + "','" + Data_Entrega + "','" + Estado + "'";
-            ComunicacaoBD.Adiciona("Requisicao", Colunas, Valores);
+            String Valores = "'" + livro.ID + "','" + requisitante.ID + "','" + Data_Levantamento.ToString("yyyy-MM-dd HH:MM:ss") + "','" + Data_Entrega.ToString("yyyy-MM-dd HH:MM:ss") + "','" + Estado + "'";
+            ComunicacaoBD.Instance.Adiciona("Requisicao", Colunas, Valores);
         }
 
         #region "Métodos estáticos"
         //Este método elimina a Requisicao com o ID Requisicao_ID
         public static void EliminaRequisicao(int Requisicao_ID)
         {
-            ComunicacaoBD.Elimina("Requisicao", Requisicao_ID);
+            ComunicacaoBD.Instance.Elimina("Requisicao", Requisicao_ID);
         }
 
         //Este método devolve uma tabela com todas as requisicoes
         public static DataTable ListaRequisicao()
         {
-            return ComunicacaoBD.Lista("Requisicao");
+            return ComunicacaoBD.Instance.Lista("Requisicao");
         }
 
         //Este método devolve uma tabela com todas as requisicoes em que Coluna = Expressao
         public static DataTable ListaRequisicao(String Coluna, String Expressao)
         {
-            return ComunicacaoBD.Lista("Requisicao", Coluna, Expressao);
+            return ComunicacaoBD.Instance.Lista("Requisicao", Coluna, Expressao);
         }
         //Este método muda o estado da requisicao com o ID Requisicao_ID para novo estado
         public static void MudaEstado(int Requisicao_ID, String NovoEstado)
         {
-            ComunicacaoBD.AlteraValor("Requisicao", "Estado", Requisicao_ID, NovoEstado);
+            ComunicacaoBD.Instance.AlteraValor("Requisicao", "Estado", Requisicao_ID, NovoEstado);
         }
 
         //Este método muda a data de entrega da requisicao com o ID Requisicao_ID para a NovaData
         public static void MudaDataEntrega(int Requisicao_ID, DateTime NovaData)
         {
-            ComunicacaoBD.AlteraValor("Requisicao", "Data_E", Requisicao_ID, NovaData.ToString());
+            ComunicacaoBD.Instance.AlteraValor("Requisicao", "Data_E", Requisicao_ID, NovaData.ToString());
         }
 
         //Este método muda a data de levantamento da requisicao com o ID Requisicao_ID para a NovaData
         public static void MudaDataLevantamento(int Requisicao_ID, DateTime NovaData)
         {
-            ComunicacaoBD.AlteraValor("Requisicao", "Data_L", Requisicao_ID, NovaData.ToString());
+            ComunicacaoBD.Instance.AlteraValor("Requisicao", "Data_L", Requisicao_ID, NovaData.ToString());
         }
         #endregion
     }

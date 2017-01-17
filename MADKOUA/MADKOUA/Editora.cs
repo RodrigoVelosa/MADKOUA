@@ -32,7 +32,7 @@ namespace MADKOUA
             set
             {
                 id = value;
-                DataTable DT = ComunicacaoBD.Lista("Editora", "ID", value.ToString());
+                DataTable DT = ComunicacaoBD.Instance.Lista("Editora", "ID", value.ToString());
                 try
                 {
                     Nome = DT.Rows[0].Field<String>("Nome");
@@ -52,38 +52,38 @@ namespace MADKOUA
         {
             String Colunas = "Nome, Morada";
             String Valores = "'" + Nome + "', '" + Morada + "'";
-            ComunicacaoBD.Adiciona("Editora", Colunas, Valores);
+            ComunicacaoBD.Instance.Adiciona("Editora", Colunas, Valores);
         }
 
         #region "Métodos estáticos"
         //Este método elimina a editora que tem o id Editora_ID
         public static void EliminaEditora(int Editora_ID)
         {
-            ComunicacaoBD.Elimina("Editora", Editora_ID);
+            ComunicacaoBD.Instance.Elimina("Editora", Editora_ID);
         }
 
         //Este método devolve uma tabela com todas Editoras que tem na base de dados
         public static DataTable ListaEditoras()
         {
-            return ComunicacaoBD.Lista("Editora");
+            return ComunicacaoBD.Instance.Lista("Editora");
         }
         
         //Este método devolve uma tabela com todas as Editoras em que Coluna = Expressao
         public static DataTable ListaEditoras(String Coluna, String Expressao)
         {
-            return ComunicacaoBD.Lista("Editora", Coluna, Expressao);
+            return ComunicacaoBD.Instance.Lista("Editora", Coluna, Expressao);
         }
 
         //Este método muda o nome da Editora que tem o ID Editora_ID para NovoNome
         public static void MudaNome(int Editora_ID, String NovoNome)
         {
-            ComunicacaoBD.AlteraValor("Editora", "Nome", Editora_ID, NovoNome);
+            ComunicacaoBD.Instance.AlteraValor("Editora", "Nome", Editora_ID, NovoNome);
         }
 
         //Este método muda a morada da Editora que tem o id Editora_ID para NovaMorada
         public static void MudaMorada(int Editora_ID, String NovaMorada)
         {
-            ComunicacaoBD.AlteraValor("Editora", "Morada", Editora_ID, NovaMorada);
+            ComunicacaoBD.Instance.AlteraValor("Editora", "Morada", Editora_ID, NovaMorada);
         }
         #endregion
     }

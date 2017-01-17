@@ -8,26 +8,43 @@ using MADKOUA_LOG;
 
 namespace MADKOUA_BD
 {
-    static class ComunicacaoBD
+    public class ComunicacaoBD
     {
-        private static ComunicaBD BD = new ComunicaBD();
-        private static Logger FicheiroLog = new Logger(new FicheiroRecorder());
-        private static Logger BDLog = new Logger(new BDRecorder());
 
-        public static void Elimina(String Tabela, int ID)
+        private static ComunicacaoBD instance;
+
+        private ComunicacaoBD() { }
+
+        public static ComunicacaoBD Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ComunicacaoBD();
+                }
+                return instance;
+            }
+        }
+
+        private ComunicaBD BD = new ComunicaBD();
+        private Logger FicheiroLog = new Logger(new FicheiroRecorder());
+        private Logger BDLog = new Logger(new BDRecorder());
+
+        public void Elimina(String Tabela, int ID)
         {
             BD.ExecutaUpdateQuery("DELETE FROM " + Tabela + " WHERE ID = " + ID);
         }
-        public static DataTable Lista(String Tabela)
+        public DataTable Lista(String Tabela)
         {
             return BD.ExecutaQuery("SELECT * FROM " + Tabela);
         }
-        public static DataTable Lista(String Tabela, String Coluna, String Procura)
+        public DataTable Lista(String Tabela, String Coluna, String Procura)
         {
             return BD.ExecutaQuery("SELECT * FROM " + Tabela + " WHERE " + Coluna + " LIKE '" + Procura + "%'");
         }
         
-        public static int DevolveInteiro(String Tabela, String Coluna, int id)
+        public int DevolveInteiro(String Tabela, String Coluna, int id)
         {
             int Resultado = 0;
             DataTable dt = BD.ExecutaQuery("SELECT " + Coluna + " FROM " + Tabela + " WHERE ID = " + id);
@@ -42,7 +59,7 @@ namespace MADKOUA_BD
             return Resultado;
         }
 
-        public static String DevolveString(String Tabela, String Coluna, int id)
+        public String DevolveString(String Tabela, String Coluna, int id)
         {
             String Resultado = "";
             DataTable dt = BD.ExecutaQuery("SELECT " + Coluna + " FROM " + Tabela + " WHERE ID = " + id);
@@ -57,7 +74,7 @@ namespace MADKOUA_BD
             return Resultado;
         }
 
-        public static void DecrementaValor(String Tabela, String Coluna, int id)
+        public void DecrementaValor(String Tabela, String Coluna, int id)
         {
             int Valor = DevolveInteiro(Tabela, Coluna, id);
             int Resultado = BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + --Valor + " WHERE ID = " + id);
@@ -72,7 +89,7 @@ namespace MADKOUA_BD
             }
         }
 
-        public static void IncrementaValor(String Tabela, String Coluna, int id)
+        public void IncrementaValor(String Tabela, String Coluna, int id)
         {
             int Valor = DevolveInteiro(Tabela, Coluna, id);
             int Resultado = BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + ++Valor + " WHERE ID = " + id);
@@ -87,7 +104,7 @@ namespace MADKOUA_BD
             }
         }
       
-        public static void AlteraValor(String Tabela, String Coluna, int id, String NovoValor)
+        public void AlteraValor(String Tabela, String Coluna, int id, String NovoValor)
         {
             int Resultado = BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = '" + NovoValor + "' WHERE ID = " + id);
             if(Resultado == 0)
@@ -100,7 +117,7 @@ namespace MADKOUA_BD
                 BDLog.Log("Alterado o valor da " + Coluna + " da " + Tabela + " com o ID " + id + " para o novo valor: " + NovoValor);
             }
         }
-        public static void AlteraValor(String Tabela, String Coluna, int id, int NovoValor)
+        public void AlteraValor(String Tabela, String Coluna, int id, int NovoValor)
         {
             int Resultado = BD.ExecutaUpdateQuery("UPDATE " + Tabela + " SET " + Coluna + " = " + NovoValor + " WHERE ID = " + id);
             if (Resultado == 0)
@@ -114,7 +131,7 @@ namespace MADKOUA_BD
             }
         }
         
-        public static void Adiciona(String Tabela, String Colunas, String Valores)
+        public void Adiciona(String Tabela, String Colunas, String Valores)
         {
             BD.ExecutaUpdateQuery("INSERT INTO " + Tabela + " (" + Colunas + ") VALUES (" + Valores + ")");
         }

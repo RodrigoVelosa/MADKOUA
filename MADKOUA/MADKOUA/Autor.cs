@@ -28,7 +28,7 @@ namespace MADKOUA
             set
             {
                 id = value;
-                DataTable DT = ComunicacaoBD.Lista("Autor", "ID", value.ToString());
+                DataTable DT = ComunicacaoBD.Instance.Lista("Autor", "ID", value.ToString());
                 try
                 {
                     Nome = DT.Rows[0].Field<String>("Nome");
@@ -49,38 +49,38 @@ namespace MADKOUA
         {
             String Colunas = "Nome, Apelido";
             String Valores = "'" + Nome + "','" + Apelido + "'";
-            ComunicacaoBD.Adiciona("Autor", Colunas, Valores);
+            ComunicacaoBD.Instance.Adiciona("Autor", Colunas, Valores);
         }
 
         #region "Métodos estáticos"
         //Este método elimina o autor com o ID Autor_ID
         public static void EliminaAutor(int Autor_ID)
         {
-            ComunicacaoBD.Elimina("Autor", Autor_ID);
+            ComunicacaoBD.Instance.Elimina("Autor", Autor_ID);
         }
 
         //Este método devolve uma tabela com todos os autores
         public static DataTable ListaAutores()
         {
-            return ComunicacaoBD.Lista("Autor");
+            return ComunicacaoBD.Instance.Lista("Autor");
         }
 
         //Este método devolve uma tabela com todos os autores em que Coluna = Expressao
         public static DataTable ListaAutores(String Coluna, String Expressao)
         {
-            return ComunicacaoBD.Lista("Autor", Coluna, Expressao);
+            return ComunicacaoBD.Instance.Lista("Autor", Coluna, Expressao);
         }
 
         //Este método muda o nome do Autor que tem o Autor_ID para NovoNome
         public static void MudaNome(int Autor_ID, String NovoNome)
         {
-            ComunicacaoBD.AlteraValor("Autor", "Nome", Autor_ID, NovoNome);
+            ComunicacaoBD.Instance.AlteraValor("Autor", "Nome", Autor_ID, NovoNome);
         }
 
         //Este método muda o Apelido que tem o Autor_ID para NovoApelido
         public static void MudaApelido(int Autor_ID, String NovoApelido)
         {
-            ComunicacaoBD.AlteraValor("Autor", "Apelido", Autor_ID, NovoApelido);
+            ComunicacaoBD.Instance.AlteraValor("Autor", "Apelido", Autor_ID, NovoApelido);
         }
         #endregion
     }
