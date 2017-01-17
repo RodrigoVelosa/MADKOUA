@@ -47,6 +47,11 @@ namespace MADKOUA
         public String Nome { set; get; }
         public String Morada { set; get; }
 
+
+        public static readonly String ColunaNome = "Nome";
+        public static readonly String ColunaMorada = "Morada";
+
+
         //Este método adiciona esta editora a base de dados
         public void AdicionaBD()
         {

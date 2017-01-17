@@ -49,6 +49,15 @@ namespace MADKOUA
         public DateTime Data_Entrega { get; set; }
         public String Estado { get; set; }
 
+
+        public static readonly String ColunaID = "ID";
+        public static readonly String ColunaLivroId = "Livro_ID";
+        public static readonly String ColunaRequisitanteId = "Requisitante_ID";
+        public static readonly String ColunaDataLevantamento = "Data_L";
+        public static readonly String ColunaDataEntrega = "Data_E";
+        public static readonly String ColunaEstado = "Estado";
+
+
         //Este método adiciona esta requisicao a base de dados.
         public void AdicionaBD()
         {
@@ -75,6 +84,7 @@ namespace MADKOUA
         {
             return ComunicacaoBD.Instance.Lista("Requisicao", Coluna, Expressao);
         }
+
         //Este método muda o estado da requisicao com o ID Requisicao_ID para novo estado
         public static void MudaEstado(int Requisicao_ID, String NovoEstado)
         {

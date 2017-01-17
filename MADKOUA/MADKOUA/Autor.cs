@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace MADKOUA
 {
     public class Autor : ItemBD
-    {
+    {        
         private Logger FicheiroLog = new Logger(new FicheiroRecorder());
 
         public Autor() { }
@@ -43,6 +43,11 @@ namespace MADKOUA
         }
         public String Nome {set; get;}
         public String Apelido {set; get;}
+
+
+        public static readonly String ColunaID = "ID";
+        public static readonly String ColunaNome = "Nome";
+        public static readonly String ColunaApelido = "Apelido";
 
         //Este método adiciona este autor à base de dados
         public void AdicionaBD()

@@ -46,6 +46,13 @@ namespace MADKOUA
         public String CodigoUtilizador { set; get; }
         public String Password { set; get; }
 
+
+        public static readonly String ColunaID = "ID";
+        public static readonly String ColunaNome = "Nome";
+        public static readonly String ColunaCodigoUtilizador = "CodigoUtilizador";
+        public static readonly String ColunaPassword = "Password";
+
+
         //Método que adiciona este requisitante a base de dados
         public void AdicionaBD()
         {
