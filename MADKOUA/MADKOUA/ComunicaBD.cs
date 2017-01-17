@@ -39,7 +39,7 @@ namespace MADKOUA_BD
             }
             catch(Exception e)
             {
-                MessageBox.Show(e.Message, "Erro na ligação à base de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(e.Message, "Erro na ligação à base de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 log.Log(DateTime.Now + ": " + e.Message);
             }
         }
@@ -54,7 +54,7 @@ namespace MADKOUA_BD
             }
             catch(Exception e)
             {
-                MessageBox.Show(e.Message, "Erro na ligação à base de dados", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                //MessageBox.Show(e.Message, "Erro na ligação à base de dados", MessageBoxButtons.OK,MessageBoxIcon.Error);
                 log.Log(DateTime.Now + ": " + e.Message);
             }
         }
@@ -68,8 +68,8 @@ namespace MADKOUA_BD
             }
             catch(Exception e)
             {
-                MessageBox.Show(e.Message, "Erro ao se desligar da base de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine(e.Message);
+                //MessageBox.Show(e.Message, "Erro ao se desligar da base de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //Console.WriteLine(e.Message);
                 log.Log(DateTime.Now + ": " + e.Message);
             }
         }
@@ -87,9 +87,9 @@ namespace MADKOUA_BD
             }
             catch(Exception e)
             {
-                MessageBox.Show(e.Message, "Erro ao executar query na base de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show(query, "Query passada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Clipboard.SetText(query);
+                //MessageBox.Show(e.Message, "Erro ao executar query na base de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(query, "Query passada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //Clipboard.SetText(query);
                 log.Log(DateTime.Now + ": " + e.Message + " Query: " + query);
             }
 
@@ -108,9 +108,9 @@ namespace MADKOUA_BD
             }
             catch(Exception e)
             {
-                MessageBox.Show(e.Message, "Erro ao atualizar a base de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show(query, "Query passada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Clipboard.SetText(query);
+                //MessageBox.Show(e.Message, "Erro ao atualizar a base de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(query, "Query passada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //Clipboard.SetText(query);
                 log.Log(DateTime.Now + ": " + e.Message + " Query: " + query);
             }
 
