@@ -58,7 +58,7 @@ namespace MADKOUA
         public static readonly String ColunaTitulo = "Titulo";
         public static readonly String ColunaEdicao = "Edicao";
         public static readonly String ColunaISBN = "ISBN";
-        public static readonly String ColunaNLivosDisp = "NLivrosDisp";
+        public static readonly String ColunaNLivosDisp = "LivrosDisponiveis";
         public static readonly String ColunaAutorId = "Autor_ID";
         public static readonly String ColunaEditoraId = "Editora_ID";
 
@@ -66,7 +66,7 @@ namespace MADKOUA
         //Este método guarda este livro na base de dados
         public void AdicionaBD()
         {
-            String Colunas = "Autor_ID, Editora_ID, Titulo, Edicao, ISBN, NLivrosDisp";
+            String Colunas = "Autor_ID, Editora_ID, Titulo, Edicao, ISBN, LivrosDisponiveis";
             String Valores = "'" + autor.ID + "','" + editora.ID + "','" + Titulo + "','" + Edicao + "','" + ISBN + "','" + NLivrosDisp + "'";
             ComunicacaoBD.Instance.Adiciona("Livro", Colunas, Valores);            
         }
